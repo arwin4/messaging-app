@@ -1,17 +1,18 @@
 import React from 'react';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
-import { Auth0Provider } from '@auth0/auth0-react';
-import App from './App';
 import Test from './components/Test';
+import Home from './components/Home';
+import Callback from './views/Callback';
+import Auth0ProviderWithNavigate from './auth0ProviderWithNavigate';
 
 // TODO: add error element/page
 // TODO: add loading element
 
 function Auth0ProviderLayout() {
   return (
-    <Auth0Provider>
+    <Auth0ProviderWithNavigate>
       <Outlet />
-    </Auth0Provider>
+    </Auth0ProviderWithNavigate>
   );
 }
 
@@ -25,6 +26,12 @@ function Router() {
           path: 'test',
           element: <Test />,
         },
+        {
+          path: '',
+          element: <Home />,
+        },
+
+        { path: 'callback', element: <Callback /> },
       ],
     },
   ]);
