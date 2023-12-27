@@ -5,6 +5,7 @@ import './index.css';
 import Auth0ProviderWithNavigate from './auth0ProviderWithNavigate';
 import Test from './components/Test';
 import Home from './components/Home';
+import Callback from './views/Callback';
 
 function Auth0ProviderLayout() {
   return (
@@ -27,6 +28,8 @@ const router = createBrowserRouter([
         path: '',
         element: <Home />,
       },
+
+      { path: 'callback', element: <Callback /> },
     ],
   },
 ]);
