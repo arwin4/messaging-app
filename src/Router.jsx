@@ -3,7 +3,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Test from './components/Test';
 import Home from './components/Home';
 import Callback from './views/Callback';
-import Auth0ProviderWithNavigate from './auth0ProviderWithNavigate';
+import Auth0ProviderWithNavigate from './components/auth/auth0ProviderWithNavigate';
 import Protected from './components/Protected';
 import AuthenticationGuard from './components/auth/AuthenticationGuard';
 
