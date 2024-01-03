@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import { redirect, useNavigate } from 'react-router-dom';
 
 const authContext = createContext();
 
@@ -36,16 +37,12 @@ function useAuth() {
     setAuthed(true);
   }
 
-  return {
-    authed,
-    login,
-    logout() {
-      return new Promise((res) => {
-        setAuthed(false);
-        res();
-      });
-    },
-  };
+  function logout() {
+    localStorage.removeItem('jwt');
+    setAuthed(false);
+  }
+
+  return { authed, login, logout };
 }
 
 export function AuthProvider({ children }) {
