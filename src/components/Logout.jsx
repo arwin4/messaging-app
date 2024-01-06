@@ -1,26 +1,12 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import useAuth from '../hooks/auth/useAuth';
 
-export default function Nav() {
-  const { authed, logout } = useAuth();
+export default function Logout() {
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
-  const handleLogout = () => {
-    logout();
-    navigate('/');
-  };
-
-  return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/pricing">Pricing</Link>
-        </li>
-      </ul>
-      {authed && <button onClick={handleLogout}>Logout</button>}
-    </nav>
-  );
+  logout();
+  useEffect(() => navigate('/'));
 }

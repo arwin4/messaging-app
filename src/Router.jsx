@@ -1,50 +1,37 @@
-import React, { useEffect } from 'react';
-import {
-  createBrowserRouter,
-  RouterProvider,
-  useNavigate,
-} from 'react-router-dom';
-import App from './App';
-import useAuth from './hooks/auth/useAuth';
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 // Components
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import RequireAuth from './components/auth/RequireAuth';
+import Logout from './components/Logout';
 
 // TODO: add error element/page
 // TODO: add loading element
-
-function Logout() {
-  const navigate = useNavigate();
-  const { logout } = useAuth();
-
-  logout();
-  useEffect(() => navigate('/'));
-}
 
 function Router() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <App />,
-    },
-
-    {
-      path: '/login',
-      element: <Login />,
-    },
-    {
-      path: '/logout',
-      element: <Logout />,
-    },
-    {
-      path: '/dashboard',
-      element: (
-        <RequireAuth>
-          <Dashboard />
-        </RequireAuth>
-      ),
+      children: [
+        {
+          index: true,
+          element: (
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          ),
+        },
+        {
+          path: '/login',
+          element: <Login />,
+        },
+        {
+          path: '/logout',
+          element: <Logout />,
+        },
+      ],
     },
   ]);
 
