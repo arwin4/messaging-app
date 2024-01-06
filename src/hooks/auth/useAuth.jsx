@@ -42,7 +42,7 @@ function useAuth() {
     setAuthed(false);
   }
 
-  return { authed, login, logout };
+  return { authed, setAuthed, login, logout };
 }
 
 export function AuthProvider({ children }) {
