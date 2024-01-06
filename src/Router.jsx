@@ -3,7 +3,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
 // Components
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
+import Dashboard, { dashboardLoader } from './pages/Dashboard';
 import RequireAuth from './components/auth/RequireAuth';
 import Logout from './components/Logout';
 
@@ -28,6 +28,7 @@ function Router() {
         {
           index: true,
           element: <Dashboard />,
+          loader: dashboardLoader,
         },
         {
           path: '/logout',
