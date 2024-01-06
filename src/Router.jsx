@@ -3,7 +3,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
 // Components
 import Login from './pages/Login';
-import Dashboard, { dashboardLoader } from './pages/Dashboard';
+import Dashboard from './pages/Dashboard';
 import RequireAuth from './components/auth/RequireAuth';
 import Logout from './components/Logout';
 
@@ -26,9 +26,8 @@ function Router() {
       element: <RequireAuthLayout />,
       children: [
         {
-          index: true,
+          path: 'dashboard',
           element: <Dashboard />,
-          loader: dashboardLoader,
         },
         {
           path: '/logout',

@@ -6,7 +6,7 @@ export default function Login() {
   const { login, authed } = useAuth();
 
   if (authed) {
-    return <Navigate to="/" />;
+    return <Navigate to="/dashboard" />;
   }
 
   // TODO: Error messages on failed login

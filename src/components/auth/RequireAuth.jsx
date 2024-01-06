@@ -10,6 +10,8 @@ export default function RequireAuth({ children }) {
   // TODO: actually verify the token
   // Check if already logged in
   useEffect(() => {
+    if (authed) return;
+
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       setAuthed(true);
