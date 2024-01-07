@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import RequireAuth from './components/auth/RequireAuth';
 import Logout from './components/Logout';
+import Sidebar from './components/Sidebar';
 
 // TODO: add error element/page
 // TODO: add loading element
@@ -14,6 +15,7 @@ import Logout from './components/Logout';
 function RequireAuthLayout() {
   return (
     <RequireAuth>
+      <Sidebar />
       <Outlet />
     </RequireAuth>
   );
