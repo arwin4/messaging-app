@@ -11,8 +11,6 @@ export default function Room() {
     return <>There was an error loading the conversation: {fetchError}</>;
   if (loadingRoom) return <>Loading conversation...</>;
 
-  console.log(room);
-
   return (
     <main>
       <Title room={room} />

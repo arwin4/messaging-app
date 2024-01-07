@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import getCurrentUser from '../../utils/getCurrentUser';
 
 export default function Title({ room }) {
   const { members } = room;
-  console.log(JSON.parse(localStorage.getItem('user')));
+  const currentUser = getCurrentUser();
+  console.log(currentUser);
 
   const memberNames = members.map((member) => member.username);
 
@@ -14,6 +16,5 @@ export default function Title({ room }) {
     return `${member.username}, `;
   });
 
-  console.log(memberNames);
   return <h1>Your conversation with {formattedMemberNames} </h1>;
 }
