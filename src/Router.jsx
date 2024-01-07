@@ -10,6 +10,7 @@ import Sidebar from './components/Sidebar';
 
 // TODO: add error element/page
 // TODO: add loading element
+import Room from './pages/Room';
 
 // Layout function to wrap any of its children inside <RequireAuth>
 function RequireAuthLayout() {
@@ -31,6 +32,7 @@ function Router() {
           path: 'dashboard',
           element: <Dashboard />,
         },
+        { path: 'conversations/:id', element: <Room /> },
         {
           path: '/logout',
           element: <Logout />,

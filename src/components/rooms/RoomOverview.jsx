@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import getRooms from '../../utils/fetch/getRooms';
 
 export default function RoomOverview() {
@@ -12,7 +13,9 @@ export default function RoomOverview() {
     <>
       <h2>Your conversations</h2>
       {rooms.rooms.map((room) => (
-        <p key={room._id}>{room._id}</p>
+        <div key={room._id}>
+          <NavLink to={`/conversations/${room._id}`}>{room._id}</NavLink>
+        </div>
       ))}
     </>
   );

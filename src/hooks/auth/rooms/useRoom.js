@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
-import getJwt from '../getJwt';
+import getJwt from '../../../utils/getJwt';
 
-export default function getRooms() {
-  const [rooms, setRooms] = useState(null);
+export default function useRoom(id) {
+  const [room, setRoom] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const fetchRooms = async () => {
+    const fetchRoom = async () => {
       try {
         const res = await fetch(
-          `${import.meta.env.VITE_API_SERVER_URL}/rooms/`,
+          `${import.meta.env.VITE_API_SERVER_URL}/rooms/${id}`,
           {
             method: 'GET',
             headers: { Authorization: `Bearer ${getJwt()}` },
@@ -19,17 +19,17 @@ export default function getRooms() {
         if (!res.ok) {
           throw new Error('Unable to fetch posts from API');
         }
-        const fetchedRooms = await res.json();
-        setRooms(fetchedRooms);
+        const fetchedRoom = await res.json();
+        setRoom(fetchedRoom);
         setError(''); // Prevent error state persisting
       } catch (err) {
         setError(err.message);
-        setRooms(null);
+        setRoom(null);
       } finally {
         setLoading(false);
       }
     };
-    fetchRooms();
+    fetchRoom();
   }, []);
-  return { rooms, loading, error };
+  return { room, loading, error };
 }
