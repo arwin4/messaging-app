@@ -1,11 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import getCurrentUser from '../../utils/getCurrentUser';
 
 export default function Title({ room }) {
   const { members } = room;
-  const currentUser = getCurrentUser();
-  console.log(currentUser);
 
   const memberNames = members.map((member) => member.username);
 
