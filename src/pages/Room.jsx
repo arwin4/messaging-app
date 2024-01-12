@@ -4,7 +4,7 @@ import useRoom from '../hooks/auth/rooms/useRoom';
 import Title from '../components/rooms/Title';
 import Messages from '../components/rooms/Messages';
 import MessagesForm from '../components/rooms/MessageForm';
-import { socket } from '../socket.io/socket';
+import socket from '../socket.io/socket';
 
 export default function Room() {
   const { id } = useParams();
