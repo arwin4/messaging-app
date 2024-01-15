@@ -29,7 +29,7 @@ export default function AddFriend() {
 export async function addFriendAction({ request }) {
   const data = await request.formData();
 
-  const res = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/users`, {
+  const res = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/friends`, {
     method: 'PATCH',
     headers: {
       Authorization: `Bearer ${getJwt()}`,
