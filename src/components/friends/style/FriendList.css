@@ -1,0 +1,6 @@
+.friend-list {
+  & input {
+    /* The friend list is actually a form, but should look like a list */
+    all: unset;
+  }
+}

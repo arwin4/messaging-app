@@ -1,9 +1,10 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { redirect, useLoaderData } from 'react-router-dom';
 import AddFriend from '../components/friends/AddFriend';
 import FriendList from '../components/friends/FriendList';
 import fetchAndSetCurrentUser from '../utils/fetch/fetchAndSetCurrentUser';
 import getCurrentUser from '../utils/getCurrentUser';
+import getJwt from '../utils/getJwt';
 
 export default function Friends() {
   const friends = useLoaderData();
@@ -35,9 +36,55 @@ export default function Friends() {
   );
 }
 
-export async function friendLoader() {
+export async function friendsLoader() {
   await fetchAndSetCurrentUser();
   const currentUser = getCurrentUser();
   const { friends } = currentUser;
   return friends;
+}
+
+export async function friendsAction({ request }) {
+  const data = await request.formData();
+
+  // Handle add friend
+  if (request.method === 'PATCH') {
+    const res = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/friends`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${getJwt()}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        newFriend: data.get('new-friend'),
+      }),
+    });
+
+    if (res.status !== 200) {
+      // TODO: fix error message
+      console.log(await res.text());
+      return { error: res.error };
+    }
+  }
+
+  // Handle delete friend
+  if (request.method === 'DELETE') {
+    const res = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/friends`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${getJwt()}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        friendsToDelete: [data.get('friend-to-delete')],
+      }),
+    });
+
+    if (res.status !== 200) {
+      // TODO: fix error message
+      console.log(await res.text());
+      return { error: res.error };
+    }
+  }
+
+  return redirect('');
 }

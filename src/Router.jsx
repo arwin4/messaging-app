@@ -12,8 +12,7 @@ import Sidebar from './components/Sidebar';
 // TODO: add loading element
 import Room from './pages/Room';
 import { sendMessage } from './components/rooms/MessageForm';
-import Friends, { friendLoader } from './pages/Friends';
-import { addFriendAction } from './components/friends/AddFriend';
+import Friends, { friendsLoader, friendsAction } from './pages/Friends';
 
 // Layout function to wrap any of its children inside <RequireAuth>
 function RequireAuthLayout() {
@@ -38,8 +37,8 @@ function Router() {
         {
           path: 'friends',
           element: <Friends />,
-          action: addFriendAction,
-          loader: friendLoader,
+          loader: friendsLoader,
+          action: friendsAction,
         },
         { path: 'conversations/:id', element: <Room />, action: sendMessage },
         {
