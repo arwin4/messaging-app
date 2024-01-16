@@ -6,8 +6,8 @@ export default function RoomOverview() {
   const { rooms, loading: loadingPosts, error: fetchError } = getRooms();
 
   if (fetchError)
-    return <>There was an error loading the blog posts: {fetchError}</>;
-  if (loadingPosts) return <>Loading posts...</>;
+    return <>There was an error loading the rooms: {fetchError}</>;
+  if (loadingPosts) return <>Loading rooms...</>;
 
   return (
     <>
