@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import fetchAndSetCurrentUser from '../../utils/fetch/fetchAndSetCurrentUser';
 
 const authContext = createContext();
 
@@ -9,6 +10,7 @@ function useAuth() {
   async function login(e) {
     e.preventDefault();
 
+    // Fetch and set token
     const res = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/auth/`, {
       method: 'POST',
       headers: {
@@ -32,12 +34,14 @@ function useAuth() {
     localStorage seems fine for this project. */
     // Slice() removes the quotes around the string
     localStorage.setItem('jwt', JSON.stringify(token).slice(1, -1));
+    await fetchAndSetCurrentUser();
 
     setAuthed(true);
   }
 
   function logout() {
     localStorage.removeItem('jwt');
+    localStorage.removeItem('user');
     setAuthed(false);
   }
 
