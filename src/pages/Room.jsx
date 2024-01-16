@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import useRoom from '../hooks/auth/rooms/useRoom';
+import useRoom from '../hooks/rooms/useRoom';
 import Title from '../components/rooms/Title';
 import Messages from '../components/rooms/Messages';
 import MessagesForm from '../components/rooms/MessageForm';
