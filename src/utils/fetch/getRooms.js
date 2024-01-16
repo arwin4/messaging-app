@@ -17,7 +17,7 @@ export default function getRooms() {
           },
         );
         if (!res.ok) {
-          throw new Error('Unable to fetch posts from API');
+          throw new Error('Unable to fetch rooms from API');
         }
         const fetchedRooms = await res.json();
         setRooms(fetchedRooms);
