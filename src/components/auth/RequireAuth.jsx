@@ -12,10 +12,16 @@ export default function RequireAuth({ children }) {
   useEffect(() => {
     if (authed) return;
 
-    const jwt = localStorage.getItem('jwt');
+    // Use the user item to check for login
+    const user = localStorage.getItem('user');
 
-    if (jwt) {
-      setAuthed(true);
+    if (user) {
+      // If there is no 'username' property, the user is not authorized and the
+      // object will contain an error message instead.
+      const parsedUser = JSON.parse(user).user;
+      if (parsedUser.username) {
+        setAuthed(true);
+      }
     }
   }, []);
 
