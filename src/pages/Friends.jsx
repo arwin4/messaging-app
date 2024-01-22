@@ -5,6 +5,7 @@ import FriendList from '../components/friends/FriendList';
 import fetchAndSetCurrentUser from '../utils/fetch/fetchAndSetCurrentUser';
 import getCurrentUser from '../utils/getCurrentUser';
 import getJwt from '../utils/getJwt';
+import fetchDuoRoom from '../utils/fetch/fetchDuoRoom';
 
 export default function Friends() {
   const friends = useLoaderData();
@@ -40,7 +41,21 @@ export async function friendsLoader() {
   await fetchAndSetCurrentUser();
   const currentUser = getCurrentUser();
   const { friends } = currentUser;
-  return friends;
+
+  // Add room ids to friends with duo rooms
+  return Promise.all(
+    friends.map(async (friend) => {
+      const res = await fetchDuoRoom(friend.username);
+
+      // No duo room found
+      if (res.status === 204) return friend;
+
+      // Duo room found, save its id
+      const duoRoom = await res.json();
+      const friendWithDuoRoomId = { ...friend, duoRoomId: duoRoom._id };
+      return friendWithDuoRoomId;
+    }),
+  );
 }
 
 export async function friendsAction({ request }) {
