@@ -11,10 +11,8 @@ export default function Friends() {
   const friends = useLoaderData();
 
   // Suggest a bot user to add if the user doesn't have friends
-  let noFriendsTip;
-
-  if (friends.length === 0) {
-    noFriendsTip = (
+  const noFriendsTip =
+    friends.length === 0 ? (
       <div className="no-friends-tip">
         <p>You haven&apos;t added any friends yet.</p>
         <p>
@@ -25,8 +23,7 @@ export default function Friends() {
           His username is <em>the count</em>.
         </p>
       </div>
-    );
-  }
+    ) : undefined;
 
   return (
     <>
