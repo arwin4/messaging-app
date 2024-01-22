@@ -3,9 +3,8 @@ import React from 'react';
 import { Form, redirect, useActionData } from 'react-router-dom';
 import getJwt from '../../utils/getJwt';
 
-export default function MessageForm({ room }) {
+export default function MessageForm() {
   const actionData = useActionData();
-  const { messages } = room;
 
   return (
     <div className="send-message">
@@ -22,7 +21,7 @@ export default function MessageForm({ room }) {
   );
 }
 
-export async function sendMessage({ params, request }) {
+export async function messageFormAction({ params, request }) {
   const roomId = params.id;
   const data = await request.formData();
 
