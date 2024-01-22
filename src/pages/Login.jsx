@@ -1,12 +1,13 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import useAuth from '../hooks/auth/useAuth';
 
 export default function Login() {
   const { login, authed } = useAuth();
+  const { state } = useLocation();
 
   if (authed) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to={state?.path || '/dashboard'} />;
   }
 
   // TODO: Error messages on failed login
