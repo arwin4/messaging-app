@@ -11,7 +11,6 @@ import Sidebar from './components/Sidebar';
 // TODO: add error element/page
 // TODO: add loading element
 import Room from './pages/Room';
-import { messageFormAction } from './components/rooms/MessageForm';
 import Friends, { friendsLoader, friendsAction } from './pages/Friends';
 
 // Layout function to wrap any of its children inside <RequireAuth>
@@ -43,7 +42,6 @@ function Router() {
         {
           path: 'conversations/:id',
           element: <Room />,
-          action: messageFormAction,
         },
         {
           path: '/logout',
