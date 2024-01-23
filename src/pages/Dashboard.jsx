@@ -1,6 +1,6 @@
 import React from 'react';
-import RoomOverview from '../components/rooms/RoomOverview';
-import Welcome from '../components/user/Welcome';
+import RoomOverview from '../components/dashboard/RoomOverview';
+import Welcome from '../components/dashboard/Welcome';
 
 export default function Dashboard() {
   return (
