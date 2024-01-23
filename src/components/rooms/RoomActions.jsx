@@ -54,10 +54,5 @@ export default function RoomActions({ room }) {
         </form>
       </dialog>
     </>
-
-    // Delete conversation:
-    // Display modal
-    // api -> delete room
-    // handle error
   );
 }
