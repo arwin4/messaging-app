@@ -5,6 +5,7 @@ import Title from '../components/rooms/Title';
 import Messages from '../components/rooms/Messages';
 import MessagesForm from '../components/rooms/MessageForm';
 import socket from '../socket.io/socket';
+import RoomActions from '../components/rooms/RoomActions';
 
 export default function Room() {
   const { id } = useParams();
@@ -48,6 +49,7 @@ export default function Room() {
   return (
     <main>
       <Title room={room} />
+      <RoomActions room={room} />
       <Messages room={room} socketMessages={socketMessages} />
       <MessagesForm room={room} />
     </main>
