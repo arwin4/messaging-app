@@ -4,8 +4,6 @@ import React from 'react';
 export default function Title({ room }) {
   const { members } = room;
 
-  const memberNames = members.map((member) => member.username);
-
   const formattedMemberNames = members.map((member, i, { length }) => {
     if (length === 1) return 'yourself';
     if (length - 2 === i) return `${member.username} `;
