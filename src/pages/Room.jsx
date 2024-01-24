@@ -10,14 +10,13 @@ import RoomActions from '../components/rooms/RoomActions';
 export default function Room() {
   const { id } = useParams();
   const [membersChanged, setMembersChanged] = useState(false);
+  // When the socket receives a new message, it is pushed in this array
+  const [socketMessages, setSocketMessages] = useState([]);
   const {
     room,
     loading: loadingRoom,
     error: fetchError,
-  } = useRoom(id, membersChanged);
-
-  // When the socket receives a new message, it is pushed in this array
-  const [socketMessages, setSocketMessages] = useState([]);
+  } = useRoom(id, membersChanged, setSocketMessages);
 
   // Socket
   useEffect(() => {
