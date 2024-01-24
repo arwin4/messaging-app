@@ -9,7 +9,12 @@ import RoomActions from '../components/rooms/RoomActions';
 
 export default function Room() {
   const { id } = useParams();
-  const { room, loading: loadingRoom, error: fetchError } = useRoom(id);
+  const [membersChanged, setMembersChanged] = useState(false);
+  const {
+    room,
+    loading: loadingRoom,
+    error: fetchError,
+  } = useRoom(id, membersChanged);
 
   // When the socket receives a new message, it is pushed in this array
   const [socketMessages, setSocketMessages] = useState([]);
@@ -49,7 +54,7 @@ export default function Room() {
   return (
     <main>
       <Title room={room} />
-      <RoomActions room={room} />
+      <RoomActions room={room} setMembersChanged={setMembersChanged} />
       <Messages room={room} socketMessages={socketMessages} />
       <MessagesForm room={room} />
     </main>
