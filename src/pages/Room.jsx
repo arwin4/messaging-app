@@ -27,7 +27,6 @@ export default function Room() {
     // Or else they'll handle all events twice.
     function setupListener() {
       socket.emit('join-room', id);
-      socket.emit('listen-for-messages');
     }
 
     function handleNewMessage(message) {
