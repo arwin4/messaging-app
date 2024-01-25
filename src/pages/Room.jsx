@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useRoom from '../hooks/rooms/useRoom';
 import Title from '../components/rooms/Title';
 import Messages from '../components/rooms/Messages';
@@ -8,7 +8,9 @@ import socket from '../socket.io/socket';
 import RoomActions from '../components/rooms/RoomActions';
 
 export default function Room() {
+  const navigate = useNavigate();
   const { id } = useParams();
+
   const [membersChanged, setMembersChanged] = useState(false);
   // When the socket receives a new message, it is pushed in this array
   const [socketMessages, setSocketMessages] = useState([]);
@@ -33,8 +35,19 @@ export default function Room() {
       setSocketMessages((previous) => [...previous, message]);
     }
 
+    function handleMembersChanged() {
+      setMembersChanged((prev) => !prev);
+    }
+
+    function handleRoomDeleted() {
+      // TODO: show message that explains why the user was redirected
+      navigate('/dashboard');
+    }
+
     socket.on('connect', setupListener);
     socket.on('new-message', handleNewMessage);
+    socket.on('members-changed', handleMembersChanged);
+    socket.on('room-deleted', handleRoomDeleted);
 
     return () => {
       // Close connection when unmounting
@@ -42,6 +55,8 @@ export default function Room() {
       // Remove event listeners
       socket.off('new-message', handleNewMessage);
       socket.off('connect', setupListener);
+      socket.off('members-changed', handleMembersChanged);
+      socket.off('room-deleted', handleRoomDeleted);
     };
   }, []);
 
