@@ -18,7 +18,7 @@ export default function RequireAuth({ children }) {
     if (user) {
       // If there is no 'username' property, the user is not authorized and the
       // object will contain an error message instead.
-      const parsedUser = JSON.parse(user).user;
+      const parsedUser = JSON.parse(user);
       if (parsedUser.username) {
         setAuthed(true);
       }
