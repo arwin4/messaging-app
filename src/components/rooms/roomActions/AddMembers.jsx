@@ -1,9 +1,11 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import convertToGroupRoom from '@utils/fetch/convertToGroupRoom';
 import addMemberToRoom from '@utils/fetch/addMemberToRoom';
 import getCurrentUser from '@utils/getCurrentUser';
 import getUser from '@utils/fetch/getUser';
+import roomPropType from '@components/propTypes/roomPropType';
+import friendPropType from '@components/propTypes/friendPropType';
 
 async function handleAddMember(userId, room, setMembersChanged) {
   if (!room.isGroup) {
@@ -87,3 +89,15 @@ function FriendListItem({ room, friend, setMembersChanged }) {
     </button>
   );
 }
+
+/* Prop Types */
+AddMembers.propTypes = {
+  room: roomPropType.isRequired,
+  setMembersChanged: PropTypes.func.isRequired,
+};
+
+FriendListItem.propTypes = {
+  room: roomPropType.isRequired,
+  friend: friendPropType.isRequired,
+  setMembersChanged: PropTypes.func.isRequired,
+};

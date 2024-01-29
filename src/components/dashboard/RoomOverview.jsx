@@ -1,9 +1,9 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import getCurrentUser from '@utils/getCurrentUser';
 import useRooms from '@hooks/rooms/useRooms';
+import roomPropType from '@components/propTypes/roomPropType';
 
 export default function RoomOverview() {
   const [roomsChanged, setRoomsChanged] = useState(false);
@@ -83,3 +83,8 @@ function RoomItem({ room }) {
     </div>
   );
 }
+
+/* Prop Types */
+RoomItem.propTypes = {
+  room: roomPropType.isRequired,
+};

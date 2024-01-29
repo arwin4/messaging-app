@@ -1,5 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
+import roomPropType from '@components/propTypes/roomPropType';
 import DeleteRoom from './roomActions/DeleteRoom';
 import ManageMembers from './roomActions/ManageMembers';
 import LeaveRoom from './roomActions/LeaveRoom';
@@ -18,3 +19,9 @@ export default function RoomActions({ room, setMembersChanged }) {
     </menu>
   );
 }
+
+/* Prop Types */
+RoomActions.propTypes = {
+  room: roomPropType.isRequired,
+  setMembersChanged: PropTypes.func.isRequired,
+};

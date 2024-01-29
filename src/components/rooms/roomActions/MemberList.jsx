@@ -1,7 +1,8 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import getCurrentUser from '@utils/getCurrentUser';
 import deleteMember from '@utils/fetch/deleteMember';
+import roomPropType from '@components/propTypes/roomPropType';
 
 export default function MemberList({ room, setMembersChanged }) {
   const currentUser = getCurrentUser();
@@ -32,3 +33,9 @@ export default function MemberList({ room, setMembersChanged }) {
     </div>
   );
 }
+
+/* Prop Types */
+MemberList.propTypes = {
+  room: roomPropType.isRequired,
+  setMembersChanged: PropTypes.func.isRequired,
+};

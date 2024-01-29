@@ -1,5 +1,6 @@
-/* eslint-disable react/prop-types */
 import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
+import roomPropType from '@components/propTypes/roomPropType';
 import MemberList from './MemberList';
 import AddMembers from './AddMembers';
 
@@ -33,3 +34,9 @@ export default function ManageMembers({ room, setMembersChanged }) {
     </>
   );
 }
+
+/* Prop Types */
+ManageMembers.propTypes = {
+  room: roomPropType.isRequired,
+  setMembersChanged: PropTypes.func.isRequired,
+};

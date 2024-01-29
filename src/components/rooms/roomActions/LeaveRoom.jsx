@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import deleteMember from '@utils/fetch/deleteMember';
 import getCurrentUser from '@utils/getCurrentUser';
+import roomPropType from '@components/propTypes/roomPropType';
 
 export default function LeaveRoom({ room }) {
   const leaveRoomModal = useRef();
@@ -53,3 +53,8 @@ export default function LeaveRoom({ room }) {
     </>
   );
 }
+
+/* Prop Types */
+LeaveRoom.propTypes = {
+  room: roomPropType.isRequired,
+};

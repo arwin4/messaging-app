@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import roomPropType from '@components/propTypes/roomPropType';
 
 export default function Title({ room }) {
   const { members } = room;
@@ -13,3 +13,8 @@ export default function Title({ room }) {
 
   return <h1>Your conversation with {formattedMemberNames} </h1>;
 }
+
+/* Prop Types */
+Title.propTypes = {
+  room: roomPropType.isRequired,
+};

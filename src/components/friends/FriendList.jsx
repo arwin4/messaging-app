@@ -1,9 +1,10 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, NavLink, useNavigate } from 'react-router-dom';
 import './style/FriendList.css';
 import createRoom from '@utils/fetch/createRoom';
 import addMemberToRoom from '@utils/fetch/addMemberToRoom';
+import friendPropType from '@components/propTypes/friendPropType';
 
 export default function FriendList({ friends }) {
   return (
@@ -44,3 +45,12 @@ function FriendListItem({ friend }) {
     </Form>
   );
 }
+
+/* Prop Types */
+FriendList.propTypes = {
+  friends: PropTypes.arrayOf(friendPropType).isRequired,
+};
+
+FriendListItem.propTypes = {
+  friend: friendPropType.isRequired,
+};

@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import deleteRoom from '@utils/fetch/deleteRoom';
+import roomPropType from '@components/propTypes/roomPropType';
 
 export default function DeleteRoom({ room }) {
   const navigate = useNavigate();
@@ -54,3 +54,8 @@ export default function DeleteRoom({ room }) {
     </>
   );
 }
+
+/* Prop Types */
+DeleteRoom.propTypes = {
+  room: roomPropType.isRequired,
+};

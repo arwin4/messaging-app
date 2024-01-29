@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import getJwt from '@utils/getJwt';

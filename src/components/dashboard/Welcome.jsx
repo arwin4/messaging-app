@@ -1,7 +1,6 @@
 import React from 'react';
 import getCurrentUser from '@utils/getCurrentUser';
 
-/* eslint-disable react/prop-types */
 export default function Welcome() {
   const currentUser = getCurrentUser();
   const { username } = currentUser;
