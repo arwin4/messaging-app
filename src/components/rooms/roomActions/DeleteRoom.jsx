@@ -20,7 +20,7 @@ export default function DeleteRoom({ room }) {
     if (res.status !== 200) {
       // TODO: Handle error
     }
-    navigate('/dashboard');
+    navigate('/');
   }
 
   return (

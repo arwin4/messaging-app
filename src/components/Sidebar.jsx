@@ -8,7 +8,7 @@ export default function Sidebar() {
 
   return (
     <nav>
-      <NavLink to="/dashboard">Dashboard</NavLink>
+      <NavLink to="/">Dashboard</NavLink>
       <NavLink to="/friends">Friends</NavLink>
       <button type="button" onClick={logout}>
         Logout

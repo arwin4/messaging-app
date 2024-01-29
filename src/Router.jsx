@@ -30,7 +30,7 @@ function Router() {
       element: <RequireAuthLayout />,
       children: [
         {
-          path: 'dashboard',
+          index: true,
           element: <Dashboard />,
         },
         {

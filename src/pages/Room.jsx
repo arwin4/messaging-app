@@ -41,7 +41,7 @@ export default function Room() {
 
     function handleRoomDeleted() {
       // TODO: show message that explains why the user was redirected
-      navigate('/dashboard');
+      navigate('/');
     }
 
     socket.on('connect', setupListener);

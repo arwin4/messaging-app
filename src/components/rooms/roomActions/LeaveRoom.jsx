@@ -19,7 +19,7 @@ export default function LeaveRoom({ room }) {
   async function handleLeaveRoom() {
     const currentUser = getCurrentUser();
     await deleteMember(room._id, currentUser._id);
-    navigate('/dashboard');
+    navigate('/');
   }
 
   return (

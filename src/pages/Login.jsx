@@ -7,7 +7,7 @@ export default function Login() {
   const { state } = useLocation();
 
   if (authed) {
-    return <Navigate to={state?.path || '/dashboard'} />;
+    return <Navigate to={state?.path || '/'} />;
   }
 
   // TODO: Error messages on failed login
