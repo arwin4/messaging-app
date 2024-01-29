@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { io } from 'socket.io-client';
 import useRooms from '../../hooks/rooms/useRooms';
 import getCurrentUser from '../../utils/getCurrentUser';
-import userSocket from '../../socket.io/userSocket';
 
 export default function RoomOverview() {
   const [roomsChanged, setRoomsChanged] = useState(false);
@@ -16,6 +16,14 @@ export default function RoomOverview() {
   const currentUser = getCurrentUser();
 
   useEffect(() => {
+    const userSocket = currentUser
+      ? io(`${import.meta.env.VITE_API_SERVER_URL}/user`, {
+          autoConnect: false,
+          transports: ['websocket'],
+          auth: { token: currentUser._id },
+        })
+      : null;
+
     userSocket.connect();
 
     function joinRoom() {
