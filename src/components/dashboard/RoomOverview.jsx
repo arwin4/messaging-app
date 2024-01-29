@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import getRooms from '../../utils/fetch/getRooms';
+import useRooms from '../../hooks/rooms/useRooms';
 import getCurrentUser from '../../utils/getCurrentUser';
 import userSocket from '../../socket.io/userSocket';
 
@@ -11,7 +11,7 @@ export default function RoomOverview() {
     rooms: roomData,
     loading: loadingPosts,
     error: fetchError,
-  } = getRooms(roomsChanged);
+  } = useRooms(roomsChanged);
 
   const currentUser = getCurrentUser();
 
