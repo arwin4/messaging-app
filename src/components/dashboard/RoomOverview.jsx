@@ -1,15 +1,41 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import getRooms from '../../utils/fetch/getRooms';
 import getCurrentUser from '../../utils/getCurrentUser';
+import userSocket from '../../socket.io/userSocket';
 
 export default function RoomOverview() {
+  const [roomsChanged, setRoomsChanged] = useState(false);
   const {
     rooms: roomData,
     loading: loadingPosts,
     error: fetchError,
-  } = getRooms();
+  } = getRooms(roomsChanged);
+
+  const currentUser = getCurrentUser();
+
+  useEffect(() => {
+    userSocket.connect();
+
+    function joinRoom() {
+      userSocket.emit('join-user-room', currentUser._id);
+    }
+
+    function handleRoomsChange() {
+      setRoomsChanged((prev) => !prev);
+    }
+
+    userSocket.on('rooms-changed', handleRoomsChange);
+    userSocket.on('connect', joinRoom);
+
+    return () => {
+      userSocket.disconnect();
+      userSocket.off('rooms-changed', handleRoomsChange);
+      userSocket.off('connect', joinRoom);
+    };
+    // }, [roomData]);
+  }, []);
 
   if (fetchError)
     return <>There was an error loading the rooms: {fetchError}</>;

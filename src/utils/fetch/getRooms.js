@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import getJwt from '../getJwt';
 
-export default function getRooms() {
+export default function getRooms(roomsChanged) {
   const [rooms, setRooms] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -30,6 +30,6 @@ export default function getRooms() {
       }
     };
     fetchRooms();
-  }, []);
+  }, [roomsChanged]);
   return { rooms, loading, error };
 }
