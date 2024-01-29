@@ -2,16 +2,16 @@ import React from 'react';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
 // Components
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import RequireAuth from './components/auth/RequireAuth';
-import Logout from './components/Logout';
-import Sidebar from './components/Sidebar';
+import RequireAuth from '@components/auth/RequireAuth';
+import Logout from '@components/Logout';
+import Sidebar from '@components/Sidebar';
+import Dashboard from '@pages/Dashboard';
+import Login from '@pages/Login';
 
 // TODO: add error element/page
 // TODO: add loading element
-import Room from './pages/Room';
-import Friends, { friendsLoader, friendsAction } from './pages/Friends';
+import Room from '@pages/Room';
+import Friends, { friendsLoader, friendsAction } from '@pages/Friends';
 
 // Layout function to wrap any of its children inside <RequireAuth>
 function RequireAuthLayout() {

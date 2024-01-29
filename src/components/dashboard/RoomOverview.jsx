@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { io } from 'socket.io-client';
-import useRooms from '../../hooks/rooms/useRooms';
-import getCurrentUser from '../../utils/getCurrentUser';
+import getCurrentUser from '@utils/getCurrentUser';
+import useRooms from '@hooks/rooms/useRooms';
 
 export default function RoomOverview() {
   const [roomsChanged, setRoomsChanged] = useState(false);

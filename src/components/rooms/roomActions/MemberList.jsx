@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import getCurrentUser from '../../../utils/getCurrentUser';
-import deleteMember from '../../../utils/fetch/deleteMember';
+import getCurrentUser from '@utils/getCurrentUser';
+import deleteMember from '@utils/fetch/deleteMember';
 
 export default function MemberList({ room, setMembersChanged }) {
   const currentUser = getCurrentUser();

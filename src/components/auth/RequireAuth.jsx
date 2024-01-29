@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import useAuth from '../../hooks/auth/useAuth';
+import useAuth from '@hooks/auth/useAuth';
 
 export default function RequireAuth({ children }) {
   const { authed, setAuthed } = useAuth();

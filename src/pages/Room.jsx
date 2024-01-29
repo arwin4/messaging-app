@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import useRoom from '../hooks/rooms/useRoom';
-import Title from '../components/rooms/Title';
-import Messages from '../components/rooms/Messages';
-import MessagesForm from '../components/rooms/MessageForm';
+import Title from '@components/rooms/Title';
+import Messages from '@components/rooms/Messages';
+import MessagesForm from '@components/rooms/MessageForm';
+import RoomActions from '@components/rooms/RoomActions';
+import useRoom from '@hooks/rooms/useRoom';
 import socket from '../socket.io/socket';
-import RoomActions from '../components/rooms/RoomActions';
 
 export default function Room() {
   const navigate = useNavigate();

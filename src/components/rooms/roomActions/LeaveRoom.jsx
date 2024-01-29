@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import deleteMember from '../../../utils/fetch/deleteMember';
-import getCurrentUser from '../../../utils/getCurrentUser';
+import deleteMember from '@utils/fetch/deleteMember';
+import getCurrentUser from '@utils/getCurrentUser';
 
 export default function LeaveRoom({ room }) {
   const leaveRoomModal = useRef();

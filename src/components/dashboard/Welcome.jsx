@@ -1,5 +1,5 @@
 import React from 'react';
-import getCurrentUser from '../../utils/getCurrentUser';
+import getCurrentUser from '@utils/getCurrentUser';
 
 /* eslint-disable react/prop-types */
 export default function Welcome() {

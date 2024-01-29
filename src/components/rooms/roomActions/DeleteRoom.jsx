@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import deleteRoom from '../../../utils/fetch/deleteRoom';
+import deleteRoom from '@utils/fetch/deleteRoom';
 
 export default function DeleteRoom({ room }) {
   const navigate = useNavigate();

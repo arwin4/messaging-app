@@ -1,11 +1,11 @@
 import React from 'react';
 import { redirect, useLoaderData } from 'react-router-dom';
-import AddFriend from '../components/friends/AddFriend';
-import FriendList from '../components/friends/FriendList';
-import fetchAndSetCurrentUser from '../utils/fetch/fetchAndSetCurrentUser';
-import getCurrentUser from '../utils/getCurrentUser';
-import getJwt from '../utils/getJwt';
-import fetchDuoRoom from '../utils/fetch/fetchDuoRoom';
+import getCurrentUser from '@utils/getCurrentUser';
+import getJwt from '@utils/getJwt';
+import fetchDuoRoom from '@utils/fetch/fetchDuoRoom';
+import fetchAndSetCurrentUser from '@utils/fetch/fetchAndSetCurrentUser';
+import AddFriend from '@components/friends/AddFriend';
+import FriendList from '@components/friends/FriendList';
 
 export default function Friends() {
   const friends = useLoaderData();

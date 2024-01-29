@@ -9,4 +9,13 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './tests/setup.js',
   },
+  resolve: {
+    alias: [
+      { find: '@utils', replacement: '/src/utils' },
+      { find: '@components', replacement: '/src/components' },
+      { find: '@pages', replacement: '/src/pages' },
+      { find: '@hooks', replacement: '/src/hooks' },
+      { find: '@assets', replacement: '/src/assets' },
+    ],
+  },
 });

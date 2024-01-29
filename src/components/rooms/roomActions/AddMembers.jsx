@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import convertToGroupRoom from '../../../utils/fetch/convertToGroupRoom';
-import addMemberToRoom from '../../../utils/fetch/addMemberToRoom';
-import getCurrentUser from '../../../utils/getCurrentUser';
-import getUser from '../../../utils/fetch/getUser';
+import convertToGroupRoom from '@utils/fetch/convertToGroupRoom';
+import addMemberToRoom from '@utils/fetch/addMemberToRoom';
+import getCurrentUser from '@utils/getCurrentUser';
+import getUser from '@utils/fetch/getUser';
 
 async function handleAddMember(userId, room, setMembersChanged) {
   if (!room.isGroup) {

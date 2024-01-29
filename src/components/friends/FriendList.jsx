@@ -2,8 +2,8 @@
 import React from 'react';
 import { Form, NavLink, useNavigate } from 'react-router-dom';
 import './style/FriendList.css';
-import createRoom from '../../utils/fetch/createRoom';
-import addMemberToRoom from '../../utils/fetch/addMemberToRoom';
+import createRoom from '@utils/fetch/createRoom';
+import addMemberToRoom from '@utils/fetch/addMemberToRoom';
 
 export default function FriendList({ friends }) {
   return (

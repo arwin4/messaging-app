@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import getJwt from '../../utils/getJwt';
+import getJwt from '@utils/getJwt';
 
 export default function useRooms(roomsChanged) {
   const [rooms, setRooms] = useState(null);

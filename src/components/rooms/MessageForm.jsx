@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import getJwt from '../../utils/getJwt';
+import getJwt from '@utils/getJwt';
 
 export default function MessageForm() {
   const inputRef = useRef();

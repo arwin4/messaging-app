@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import fetchAndSetCurrentUser from '../../utils/fetch/fetchAndSetCurrentUser';
+import fetchAndSetCurrentUser from '@utils/fetch/fetchAndSetCurrentUser';
 
 const authContext = createContext();
 

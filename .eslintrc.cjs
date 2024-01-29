@@ -11,4 +11,18 @@ module.exports = {
   },
   plugins: ['react'],
   rules: { 'no-underscore-dangle': 'off' }, // Need underscore to reference mongo _id
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@components', './src/components'],
+          ['@utils', './src/utils'],
+          ['@pages', './src/pages'],
+          ['@hooks', './src/hooks'],
+          ['@assets', './src/assets'],
+        ],
+        extensions: ['.js', '.jsx'],
+      },
+    },
+  },
 };
