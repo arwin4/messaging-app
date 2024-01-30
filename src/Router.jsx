@@ -13,6 +13,7 @@ import Login from '@pages/Login';
 import Room from '@pages/Room';
 import Friends, { friendsLoader, friendsAction } from '@pages/Friends';
 import { roomsLoader } from '@components/dashboard/RoomOverview';
+import Error from '@pages/Error';
 
 // Layout function to wrap any of its children inside <RequireAuth>
 function RequireAuthLayout() {
@@ -29,6 +30,7 @@ function Router() {
     {
       path: '/',
       element: <RequireAuthLayout />,
+      errorElement: <Error />,
       children: [
         {
           index: true,
@@ -54,6 +56,7 @@ function Router() {
     {
       path: '/login',
       element: <Login />,
+      errorElement: <Error />,
     },
   ]);
 
