@@ -20,7 +20,7 @@ export default function useRooms(roomsChanged) {
           throw new Error('Unable to fetch rooms from API');
         }
         const fetchedRooms = await res.json();
-        setRooms(fetchedRooms);
+        setRooms(fetchedRooms.rooms);
         setError(''); // Prevent error state persisting
       } catch (err) {
         setError(err.message);

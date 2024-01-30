@@ -7,14 +7,11 @@ import roomPropType from '@components/propTypes/roomPropType';
 
 export default function RoomOverview() {
   const [roomsChanged, setRoomsChanged] = useState(false);
-  const {
-    rooms: roomData,
-    loading: loadingPosts,
-    error: fetchError,
-  } = useRooms(roomsChanged);
+  const { rooms, loading, error } = useRooms(roomsChanged);
 
   const currentUser = getCurrentUser();
 
+  // Connect userSocket, so the client can receive live updates for rooms
   useEffect(() => {
     const userSocket = currentUser
       ? io(`${import.meta.env.VITE_API_SERVER_URL}/user`, {
@@ -42,24 +39,22 @@ export default function RoomOverview() {
       userSocket.off('rooms-changed', handleRoomsChange);
       userSocket.off('connect', joinRoom);
     };
-    // }, [roomData]);
   }, []);
 
-  if (fetchError)
-    return <>There was an error loading the rooms: {fetchError}</>;
-  if (loadingPosts) return <>Loading rooms...</>;
+  if (error) return <>There was an error loading the rooms: {error}</>;
+  if (loading) return <>Loading rooms...</>;
 
   return (
     <>
       <h2>Your group conversations</h2>
-      {roomData.rooms
+      {rooms
         .filter((room) => room.isGroup)
         .map((room) => (
           <RoomItem room={room} key={room._id} />
         ))}
 
       <h2>Your one-on-one conversations</h2>
-      {roomData.rooms
+      {rooms
         .filter((room) => room.isGroup === false)
         .map((room) => (
           <RoomItem room={room} key={room._id} />
