@@ -12,6 +12,7 @@ import Login from '@pages/Login';
 // TODO: add loading element
 import Room from '@pages/Room';
 import Friends, { friendsLoader, friendsAction } from '@pages/Friends';
+import { roomsLoader } from '@components/dashboard/RoomOverview';
 
 // Layout function to wrap any of its children inside <RequireAuth>
 function RequireAuthLayout() {
@@ -32,6 +33,7 @@ function Router() {
         {
           index: true,
           element: <Dashboard />,
+          loader: roomsLoader,
         },
         {
           path: 'friends',

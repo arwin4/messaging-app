@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, useLoaderData, useRevalidator } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import getCurrentUser from '@utils/getCurrentUser';
-import useRooms from '@hooks/rooms/useRooms';
 import roomPropType from '@components/propTypes/roomPropType';
+import getJwt from '@utils/getJwt';
 
 export default function RoomOverview() {
-  const [roomsChanged, setRoomsChanged] = useState(false);
-  const { rooms, loading, error } = useRooms(roomsChanged);
-
+  const rooms = useLoaderData();
+  const revalidator = useRevalidator();
   const currentUser = getCurrentUser();
 
   // Connect userSocket, so the client can receive live updates for rooms
@@ -28,7 +27,7 @@ export default function RoomOverview() {
     }
 
     function handleRoomsChange() {
-      setRoomsChanged((prev) => !prev);
+      revalidator.revalidate();
     }
 
     userSocket.on('rooms-changed', handleRoomsChange);
@@ -40,9 +39,6 @@ export default function RoomOverview() {
       userSocket.off('connect', joinRoom);
     };
   }, []);
-
-  if (error) return <>There was an error loading the rooms: {error}</>;
-  if (loading) return <>Loading rooms...</>;
 
   return (
     <>
@@ -77,6 +73,15 @@ function RoomItem({ room }) {
       </NavLink>
     </div>
   );
+}
+
+export async function roomsLoader() {
+  const res = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/rooms/`, {
+    method: 'GET',
+    headers: { Authorization: `Bearer ${getJwt()}` },
+  });
+  const fetchedRooms = await res.json();
+  return fetchedRooms.rooms;
 }
 
 /* Prop Types */
