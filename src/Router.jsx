@@ -1,10 +1,7 @@
 import React from 'react';
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 // Components
-import RequireAuth from '@components/auth/RequireAuth';
-import Logout from '@components/Logout';
-import Sidebar from '@components/Sidebar';
 import Dashboard from '@pages/Dashboard';
 import Login from '@pages/Login';
 
@@ -14,21 +11,13 @@ import Room from '@pages/Room';
 import Friends, { friendsLoader, friendsAction } from '@pages/Friends';
 import { roomsLoader } from '@components/dashboard/RoomOverview';
 import Error from '@pages/Error';
-
-// Layout function to wrap any of its children inside <RequireAuth>
-function RequireAuthLayout() {
-  return (
-    <RequireAuth>
-      <Sidebar />
-      <Outlet />
-    </RequireAuth>
-  );
-}
+import RequireAuthLayout from '@components/RequireAuthLayout';
 
 function Router() {
   const router = createBrowserRouter([
     {
       path: '/',
+      // Layout function wraps any of its children inside <RequireAuth>
       element: <RequireAuthLayout />,
       errorElement: <Error />,
       children: [
@@ -46,10 +35,6 @@ function Router() {
         {
           path: 'conversations/:id',
           element: <Room />,
-        },
-        {
-          path: '/logout',
-          element: <Logout />,
         },
       ],
     },

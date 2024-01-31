@@ -1,0 +1,23 @@
+:root {
+  --tomato: hsla(7, 100%, 66%, 1);
+  --space-cadet: hsla(235, 21%, 21%, 1);
+  --cool-gray: hsla(218, 17%, 62%, 1);
+  --antiflash-white: hsla(197, 24%, 94%, 1);
+  --red-pantone: hsla(353, 86%, 54%, 1);
+  --fire-engine-red: hsla(350, 96%, 43%, 1);
+}
+
+body {
+  margin: 0 0;
+
+  font-family: 'Red Hat Display', sans-serif;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+}
+
+main {
+  padding-bottom: 70px; /* Prevent navbar overlapping at bottom of element */
+}

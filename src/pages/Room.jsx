@@ -65,11 +65,11 @@ export default function Room() {
   if (loadingRoom) return <>Loading conversation...</>;
 
   return (
-    <main>
+    <>
       <Title room={room} />
       <RoomActions room={room} setMembersChanged={setMembersChanged} />
       <Messages room={room} socketMessages={socketMessages} />
       <MessagesForm room={room} />
-    </main>
+    </>
   );
 }
