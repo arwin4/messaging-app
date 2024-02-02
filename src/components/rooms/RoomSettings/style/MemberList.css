@@ -1,0 +1,30 @@
+.member-list-container {
+  display: grid;
+
+  gap: var(--list-spacing);
+  padding-bottom: var(--list-spacing);
+
+  .member-list {
+    display: grid;
+    gap: 5px;
+
+    padding-inline-start: 0;
+
+    .no-other-members-message {
+      margin-left: 20px;
+      text-align: center;
+    }
+
+    .member {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+
+      .username {
+        text-align: end;
+        flex: 0 0 100px;
+      }
+    }
+  }
+}

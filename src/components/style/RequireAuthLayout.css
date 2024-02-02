@@ -1,10 +1,23 @@
+@import '../../style/reset.css';
+@import '../../style/button.css';
+@import '../../style/dialog.css';
+
 :root {
+  /* Variables */
   --tomato: hsla(7, 100%, 66%, 1);
   --space-cadet: hsla(235, 21%, 21%, 1);
   --cool-gray: hsla(218, 17%, 62%, 1);
-  --antiflash-white: hsla(197, 24%, 94%, 1);
+  --antiflash-white: rgb(231, 231, 231);
   --red-pantone: hsla(353, 86%, 54%, 1);
   --fire-engine-red: hsla(350, 96%, 43%, 1);
+
+  --indigo-0: #edf2ff;
+  --indigo-1: #dbe4ff;
+  --indigo-2: #bac8ff;
+  --indigo-3: #91a7ff;
+  --indigo-4: #748ffc;
+
+  --gray-8: #343a40;
 }
 
 body {

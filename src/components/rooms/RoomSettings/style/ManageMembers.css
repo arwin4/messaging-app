@@ -1,0 +1,10 @@
+.manage-members-dialog {
+  .settings {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    padding: 15px;
+
+    place-self: center;
+  }
+}

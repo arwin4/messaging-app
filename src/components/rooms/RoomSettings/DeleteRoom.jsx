@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import deleteRoom from '@utils/fetch/deleteRoom';
 import roomPropType from '@components/propTypes/roomPropType';
+import { InlineIcon } from '@iconify/react';
 
 export default function DeleteRoom({ room }) {
   const navigate = useNavigate();
@@ -27,10 +28,15 @@ export default function DeleteRoom({ room }) {
     <>
       <button
         type="button"
-        className="delete-room"
+        className="label-btn delete-room"
         onClick={openDeleteConversationModal}
       >
-        Delete conversation
+        <InlineIcon
+          className="icon"
+          icon="ri:delete-bin-2-line"
+          height="unset"
+        />
+        Delete chat
       </button>
 
       <dialog ref={deleteRoomModal}>

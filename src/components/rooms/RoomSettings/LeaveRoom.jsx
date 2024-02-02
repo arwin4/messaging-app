@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import deleteMember from '@utils/fetch/deleteMember';
 import getCurrentUser from '@utils/getCurrentUser';
 import roomPropType from '@components/propTypes/roomPropType';
+import { InlineIcon } from '@iconify/react';
 
 export default function LeaveRoom({ room }) {
   const leaveRoomModal = useRef();
@@ -26,10 +27,11 @@ export default function LeaveRoom({ room }) {
     <>
       <button
         type="button"
-        className="delete-room"
+        className="label-btn delete-room"
         onClick={openLeaveRoomModal}
       >
-        Leave conversation
+        <InlineIcon className="icon" icon="ri:door-open-line" height="unset" />
+        Leave chat
       </button>
 
       <dialog ref={leaveRoomModal}>

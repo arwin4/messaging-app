@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import getCurrentUser from '@utils/getCurrentUser';
 import deleteMember from '@utils/fetch/deleteMember';
 import roomPropType from '@components/propTypes/roomPropType';
+import './style/MemberList.css';
+import { InlineIcon } from '@iconify/react';
 
 export default function MemberList({ room, setMembersChanged }) {
   const currentUser = getCurrentUser();
@@ -14,22 +16,40 @@ export default function MemberList({ room, setMembersChanged }) {
 
   return (
     <div className="member-list-container">
-      <h2>Members</h2>
-      <menu className="member-list">
-        {room.members.length === 1 && `You're the only member.`}
+      <h2 className="section-title">
+        <InlineIcon className="icon" icon="ri:group-line" height="unset" />
+        Members
+      </h2>
+      <ul className="member-list">
+        {room.members.length === 1 && (
+          <div className="no-other-members-message">
+            You&apos;re the only member.
+          </div>
+        )}
+
         {room.members.map((member) => {
           // Don't display current user in member list
           if (member.username === currentUser.username) return null;
           return (
-            <li key={member._id}>
-              <div>{member.username}</div>
-              <button type="button" onClick={() => removeMember(member._id)}>
+            <li className="member" key={member._id}>
+              <div className="username">{member.username}</div>
+              <button
+                className="label-btn horizontal"
+                type="button"
+                onClick={() => removeMember(member._id)}
+              >
                 Remove
+                <InlineIcon
+                  className="icon"
+                  // icon="ri:delete-back-2-line"
+                  icon="ri:close-line"
+                  height="unset"
+                />
               </button>
             </li>
           );
         })}
-      </menu>
+      </ul>
     </div>
   );
 }

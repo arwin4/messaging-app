@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import roomPropType from '@components/propTypes/roomPropType';
-import DeleteRoom from './roomActions/DeleteRoom';
-import ManageMembers from './roomActions/ManageMembers';
-import LeaveRoom from './roomActions/LeaveRoom';
+import DeleteRoom from './RoomSettings/DeleteRoom';
+import ManageMembers from './RoomSettings/ManageMembers';
+import LeaveRoom from './RoomSettings/LeaveRoom';
 
 // TODO: Add leave group button
 // TODO: Clear messages button
@@ -14,8 +14,6 @@ export default function RoomActions({ room, setMembersChanged }) {
   return (
     <menu className="room-actions">
       <ManageMembers room={room} setMembersChanged={setMembersChanged} />
-      {room.members.length > 1 && <LeaveRoom room={room} />}
-      <DeleteRoom room={room} />
     </menu>
   );
 }

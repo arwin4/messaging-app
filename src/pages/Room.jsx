@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Title from '@components/rooms/Title';
 import Messages from '@components/rooms/Messages';
 import MessagesForm from '@components/rooms/MessageForm';
-import RoomActions from '@components/rooms/RoomActions';
 import useRoom from '@hooks/rooms/useRoom';
+import Header from '@components/rooms/Header';
 import socket from '../socket.io/socket';
 
 export default function Room() {
@@ -65,11 +64,12 @@ export default function Room() {
   if (loadingRoom) return <>Loading conversation...</>;
 
   return (
-    <>
-      <Title room={room} />
-      <RoomActions room={room} setMembersChanged={setMembersChanged} />
+    // TODO: show number of members
+    <div className="room">
+      {/* <Title room={room} /> */}
+      <Header room={room} setMembersChanged={setMembersChanged} />
       <Messages room={room} socketMessages={socketMessages} />
       <MessagesForm room={room} />
-    </>
+    </div>
   );
 }
