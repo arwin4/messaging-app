@@ -1,6 +1,7 @@
 @import '../../style/reset.css';
 @import '../../style/button.css';
 @import '../../style/dialog.css';
+@import '../../style/input.css';
 
 :root {
   /* Variables */
