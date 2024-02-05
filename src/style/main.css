@@ -1,9 +1,9 @@
-@import '../../style/reset.css';
-@import '../../style/button.css';
-@import '../../style/dialog.css';
-@import '../../style/input.css';
+@import 'reset.css';
+@import 'button.css';
+@import 'dialog.css';
+@import 'input.css';
 
-:root {
+html {
   /* Variables */
   --tomato: hsla(7, 100%, 66%, 1);
   --space-cadet: hsla(235, 21%, 21%, 1);

@@ -14,6 +14,7 @@ dialog {
   border-radius: 25px;
   border-width: 0;
 
+  /* Dialog sticks to the bottom of the screen */
   padding-block-end: 25px;
   margin-block-end: 0;
   border-end-end-radius: 0;
@@ -24,6 +25,12 @@ dialog {
   border-color: var(--cool-gray);
   color: var(--gray-8);
   box-shadow: 1px -3px 20px 0px rgb(0 0 0 / 50%);
+
+  @media (min-width: 768px) {
+    /* Place dialog in center if the screen is not mobile */
+    margin-block-end: auto;
+    border-radius: 25px;
+  }
 
   &::backdrop {
     backdrop-filter: blur(2px);
