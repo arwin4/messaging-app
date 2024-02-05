@@ -16,11 +16,11 @@
   }
 
   .add-member-by-username-container {
-    display: grid;
-
     .add-member-by-username {
       padding-top: var(--list-spacing);
-      place-self: center;
+
+      display: flex;
+      place-content: center;
     }
   }
 }

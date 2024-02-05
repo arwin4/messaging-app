@@ -63,7 +63,7 @@ dialog {
 
   .section-title {
     display: flex;
-    align-items: center;
+    align-items: start;
     gap: 10px;
     line-height: 1.3rem;
 
@@ -73,7 +73,6 @@ dialog {
     .icon {
       flex: 0 0 auto;
       height: 20px;
-      align-self: flex-start;
     }
   }
 }
