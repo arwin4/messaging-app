@@ -43,6 +43,7 @@ dialog {
     height: 60px;
 
     background: var(--indigo-2);
+    box-shadow: 0px -1px 9px 0px rgb(0 0 0 / 30%);
 
     .icon {
       height: 30px;
@@ -56,6 +57,7 @@ dialog {
 
     .close-btn {
       display: flex;
+      place-content: end;
     }
   }
 
@@ -69,7 +71,9 @@ dialog {
     margin: 0 20px;
 
     .icon {
+      flex: 0 0 auto;
       height: 20px;
+      align-self: flex-start;
     }
   }
 }

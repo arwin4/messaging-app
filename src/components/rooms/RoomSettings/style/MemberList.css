@@ -2,7 +2,7 @@
   display: grid;
 
   gap: var(--list-spacing);
-  padding-bottom: var(--list-spacing);
+  padding-bottom: calc(var(--list-spacing) + 25px);
 
   .member-list {
     display: grid;

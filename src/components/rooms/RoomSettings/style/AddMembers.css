@@ -4,7 +4,7 @@
 
   .add-friends-container {
     gap: var(--list-spacing);
-    padding-bottom: var(--list-spacing);
+    padding-bottom: calc(var(--list-spacing) + 25px);
   }
 
   .add-friends {
@@ -17,10 +17,10 @@
 
   .add-member-by-username-container {
     display: grid;
-    place-items: center;
 
     .add-member-by-username {
       padding-top: var(--list-spacing);
+      place-self: center;
     }
 
     .add-member-input {
