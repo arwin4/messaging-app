@@ -43,6 +43,8 @@
   text-align: center;
 
   font-weight: 500;
+  color: var(--gray-8);
+
   background-color: var(--cool-gray);
   background-color: var(--indigo-1);
 
