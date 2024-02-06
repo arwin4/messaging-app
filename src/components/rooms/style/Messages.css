@@ -1,0 +1,45 @@
+.messages {
+  display: grid;
+  gap: 25px;
+
+  padding: 0 20px;
+  padding-top: 5px;
+
+  grid-auto-rows: max-content;
+
+  .message {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    .metadata {
+      display: flex;
+      gap: 20px;
+
+      .author {
+        font-weight: 500;
+        padding: 0 5px;
+      }
+    }
+
+    .text-content {
+      background-color: var(--indigo-1);
+
+      width: fit-content;
+      max-width: 500px;
+      border-radius: 10px;
+      padding: 10px;
+
+      word-wrap: break-word;
+    }
+
+    /* Current user's messages align to the right */
+    &.current-user {
+      align-items: end;
+
+      .author {
+        order: 1;
+      }
+    }
+  }
+}
