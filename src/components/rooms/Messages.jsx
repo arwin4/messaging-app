@@ -1,7 +1,9 @@
 import React from 'react';
 import { format, formatRelative } from 'date-fns';
 import './style/Messages.css';
+import PropTypes from 'prop-types';
 import getCurrentUser from '@utils/getCurrentUser';
+import roomPropType from '@components/propTypes/roomPropType';
 
 export default function Messages({ room, socketMessages }) {
   const { messages } = room;
@@ -40,3 +42,23 @@ export default function Messages({ room, socketMessages }) {
 
   return <div className="messages">{messagesElement}</div>;
 }
+
+/* Prop Types */
+Messages.propTypes = {
+  room: roomPropType.isRequired,
+  socketMessages: PropTypes.arrayOf(
+    PropTypes.shape({
+      dateCreated: PropTypes.string,
+      author: PropTypes.shape({
+        _id: PropTypes.string,
+        username: PropTypes.string,
+      }),
+      content: PropTypes.shape({
+        isText: PropTypes.bool,
+        isImage: PropTypes.bool,
+        textContent: PropTypes.string,
+      }),
+      _id: PropTypes.string,
+    }).isRequired,
+  ).isRequired,
+};

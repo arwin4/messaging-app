@@ -8,7 +8,8 @@
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 
-  background-color: var(--cool-gray);
+  background-color: var(--indigo-2);
+  box-shadow: 0px 10px 20px 0px rgb(0 0 0 / 50%);
 
   .item {
     position: relative;
@@ -24,7 +25,7 @@
 
     .icon,
     .description {
-      color: var(--space-cadet);
+      color: var(--gray-8);
     }
 
     .icon {
@@ -35,7 +36,8 @@
     &.active {
       .icon,
       .description {
-        color: var(--antiflash-white);
+        /* TODO: pick better accent color */
+        color: var(--tomato);
       }
 
       .active-indicator {
@@ -46,7 +48,7 @@
         height: 25px;
         border-radius: 50%;
 
-        background-color: var(--antiflash-white);
+        background-color: var(#868e96);
       }
     }
   }
