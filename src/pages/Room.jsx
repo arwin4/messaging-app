@@ -70,7 +70,7 @@ export default function Room() {
       {/* <Title room={room} /> */}
       <Header room={room} setMembersChanged={setMembersChanged} />
       <Messages room={room} socketMessages={socketMessages} />
-      <MessagesForm room={room} />
+      <MessagesForm room={room}  socketMessages={socketMessages} />
     </div>
   );
 }
