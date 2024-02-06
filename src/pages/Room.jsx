@@ -5,6 +5,7 @@ import MessagesForm from '@components/rooms/MessageForm';
 import useRoom from '@hooks/rooms/useRoom';
 import Header from '@components/rooms/Header';
 import socket from '../socket.io/socket';
+import './style/Room.css';
 
 export default function Room() {
   const navigate = useNavigate();

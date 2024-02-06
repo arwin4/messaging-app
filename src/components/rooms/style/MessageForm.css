@@ -1,0 +1,14 @@
+.send-message {
+  display: flex;
+  gap: 10px;
+
+  padding: 5px max(20px, 5%);
+
+  > input {
+    flex: 1 0 auto;
+  }
+
+  > button {
+    width: fit-content;
+  }
+}

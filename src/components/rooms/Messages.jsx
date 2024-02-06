@@ -13,5 +13,5 @@ export default function Messages({ room, socketMessages }) {
     </div>
   ));
 
-  return messagesElement;
+  return <div className="messages">{messagesElement}</div>;
 }

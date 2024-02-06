@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import getJwt from '@utils/getJwt';
+import './style/MessageForm.css';
+import { InlineIcon } from '@iconify/react';
 
 export default function MessageForm() {
   const inputRef = useRef();
@@ -46,18 +48,27 @@ export default function MessageForm() {
   }
 
   return (
-    <div className="send-message">
-      <h2 className="title">Send message</h2>
-      <form method="post" action="" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="message"
-          ref={inputRef}
-          maxLength={500}
-          required
+    <form
+      className="send-message"
+      method="post"
+      action=""
+      onSubmit={handleSubmit}
+    >
+      <input
+        type="text"
+        name="message"
+        ref={inputRef}
+        maxLength={500}
+        autoComplete="off"
+        required
+      />
+      <button className="label-btn" type="submit" aria-label="Send message">
+        <InlineIcon
+          className="icon"
+          icon="ri:send-plane-2-line"
+          height="unset"
         />
-        <button type="submit">Send</button>
-      </form>
-    </div>
+      </button>
+    </form>
   );
 }

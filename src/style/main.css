@@ -35,5 +35,5 @@ body {
 
 main {
   padding-bottom: 70px; /* Prevent navbar overlapping at bottom of element */
-  padding-top: 50px; /* Prevent header overlapping at top of element */
+  width: 100%;
 }
