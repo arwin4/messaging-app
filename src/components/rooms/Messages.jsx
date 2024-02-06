@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { format, formatRelative } from 'date-fns';
 import './style/Messages.css';
 import PropTypes from 'prop-types';
@@ -7,7 +7,20 @@ import roomPropType from '@components/propTypes/roomPropType';
 
 export default function Messages({ room, socketMessages }) {
   const { messages } = room;
+  const messagesRef = useRef(null);
+
   const currentUser = getCurrentUser();
+
+  // Scroll down to latest message on both mount and new message
+  // Source: https://www.codingbeautydev.com/blog/react-scroll-to-bottom-of-div
+  function scrollToNewMessage() {
+    const lastChildElement = messagesRef.current?.lastElementChild;
+    lastChildElement?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  useEffect(() => {
+    scrollToNewMessage();
+  }, [socketMessages]);
 
   const fetchAndSocketMessages = messages.concat(socketMessages);
 
@@ -25,6 +38,7 @@ export default function Messages({ room, socketMessages }) {
     return (
       <div
         key={message._id}
+        ref={messagesRef}
         className={`message ${
           isCurrentUserAuthorOfMessage ? 'current-user' : ''
         }`}
