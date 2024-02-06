@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import roomPropType from '@components/propTypes/roomPropType';
+import { InlineIcon } from '@iconify/react';
 import MemberList from './RoomSettings/MemberList';
 import AddMembers from './RoomSettings/AddMembers';
 import './RoomSettings/style/ManageMembers.css';
@@ -16,10 +17,14 @@ export default function RoomSettings({ room, setMembersChanged }) {
   }
 
   return (
-    // TODO: style group settings button (w/ icon)
     <>
-      <button type="button" onClick={openManageMembersModal}>
-        Group settings
+      <button
+        className="no-label-btn"
+        type="button"
+        onClick={openManageMembersModal}
+        aria-label="Chat settings"
+      >
+        <InlineIcon className="icon" icon="ri:settings-4-line" height="unset" />
       </button>
 
       <dialog className="manage-members-dialog" ref={manageMembersModal}>

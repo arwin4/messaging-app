@@ -18,6 +18,7 @@ html {
   --indigo-3: #91a7ff;
   --indigo-4: #748ffc;
 
+  --gray-5: #adb5bd;
   --gray-8: #343a40;
 }
 
@@ -34,4 +35,5 @@ body {
 
 main {
   padding-bottom: 70px; /* Prevent navbar overlapping at bottom of element */
+  padding-top: 50px; /* Prevent header overlapping at top of element */
 }
