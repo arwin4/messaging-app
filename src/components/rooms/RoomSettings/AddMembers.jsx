@@ -8,6 +8,7 @@ import roomPropType from '@components/propTypes/roomPropType';
 import friendPropType from '@components/propTypes/friendPropType';
 import './style/AddMembers.css';
 import { InlineIcon } from '@iconify/react';
+import LabelButton from '@components/buttons/LabelButton';
 
 async function handleAddMember(userId, room, setMembersChanged) {
   if (!room.isGroup) {
@@ -96,14 +97,12 @@ export default function AddMembers({ room, setMembersChanged }) {
 
 function FriendListItem({ room, friend, setMembersChanged }) {
   return (
-    <button
-      className="label-btn horizontal"
-      type="button"
+    <LabelButton
       onClick={() => handleAddMember(friend._id, room, setMembersChanged)}
-    >
-      {friend.username}
-      <InlineIcon className="icon" icon="ri:add-line" height="unset" />
-    </button>
+      icon="ri:add-line"
+      text={friend.username}
+      inline="true"
+    />
   );
 }
 

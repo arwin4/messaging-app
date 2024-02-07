@@ -17,6 +17,12 @@
 
   &:hover,
   &:focus-visible {
+    transition: box-shadow 0.1s ease;
+    transition: border-color 0.1s ease;
+
+    border-color: transparent;
+    box-shadow: none;
+
     > svg {
       transition: box-shadow 0.1s ease;
       cursor: pointer;
@@ -48,6 +54,10 @@
   background-color: var(--cool-gray);
   background-color: var(--indigo-1);
 
+  .icon {
+    height: 30px;
+  }
+
   &:hover,
   &:focus-visible {
     cursor: pointer;
@@ -56,18 +66,14 @@
     box-shadow: 0px 0px 0px 2px rgb(0 0 0 / 57%);
   }
 
-  .icon {
-    height: 30px;
-  }
-
-  &.horizontal {
+  &.inline {
     height: 10px;
     flex-direction: row;
-    justify-content: center;
     width: fit-content;
 
     .icon {
       height: 20px;
+      order: 1;
     }
   }
 }

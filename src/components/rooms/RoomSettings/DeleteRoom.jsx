@@ -1,8 +1,11 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/button-has-type */
+
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import deleteRoom from '@utils/fetch/deleteRoom';
 import roomPropType from '@components/propTypes/roomPropType';
-import { InlineIcon } from '@iconify/react';
+import LabelButton from '@components/buttons/LabelButton';
 
 export default function DeleteRoom({ room }) {
   const navigate = useNavigate();
@@ -26,18 +29,11 @@ export default function DeleteRoom({ room }) {
 
   return (
     <>
-      <button
-        type="button"
-        className="label-btn delete-room"
-        onClick={openDeleteConversationModal}
-      >
-        <InlineIcon
-          className="icon"
-          icon="ri:delete-bin-2-line"
-          height="unset"
-        />
-        Delete chat
-      </button>
+      <LabelButton
+        onClick={() => openDeleteConversationModal()}
+        icon="ri:delete-bin-2-line"
+        text="Delete chat"
+      />
 
       <dialog ref={deleteRoomModal}>
         <form onSubmit={handleDeleteConversation}>
@@ -64,4 +60,8 @@ export default function DeleteRoom({ room }) {
 /* Prop Types */
 DeleteRoom.propTypes = {
   room: roomPropType.isRequired,
+};
+
+LabelButton.defaultProps = {
+  type: 'button',
 };

@@ -5,6 +5,7 @@ import deleteMember from '@utils/fetch/deleteMember';
 import roomPropType from '@components/propTypes/roomPropType';
 import './style/MemberList.css';
 import { InlineIcon } from '@iconify/react';
+import LabelButton from '@components/buttons/LabelButton';
 
 export default function MemberList({ room, setMembersChanged }) {
   const currentUser = getCurrentUser();
@@ -33,19 +34,12 @@ export default function MemberList({ room, setMembersChanged }) {
           return (
             <li className="member" key={member._id}>
               <div className="username">{member.username}</div>
-              <button
-                className="label-btn horizontal"
-                type="button"
+              <LabelButton
                 onClick={() => removeMember(member._id)}
-              >
-                Remove
-                <InlineIcon
-                  className="icon"
-                  // icon="ri:delete-back-2-line"
-                  icon="ri:close-line"
-                  height="unset"
-                />
-              </button>
+                icon="ri:close-line"
+                text="Remove"
+                inline="true"
+              />
             </li>
           );
         })}
