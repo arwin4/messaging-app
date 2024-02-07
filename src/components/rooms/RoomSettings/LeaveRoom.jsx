@@ -34,22 +34,37 @@ export default function LeaveRoom({ room }) {
         Leave chat
       </button>
 
-      <dialog ref={leaveRoomModal}>
-        <form onSubmit={handleLeaveRoom}>
-          <p>
-            If you leave this conversation, you won&apos;t be able to rejoin it,
-            unless one of the other participants adds you back to it.
-          </p>
-          <p>Are you sure you want to leave this conversation?</p>
+      <dialog ref={leaveRoomModal} className="confirmation">
+        <header>
+          <h1>Leave chat?</h1>
+        </header>
 
-          <menu>
-            <button formMethod="dialog" type="submit">
-              Yes, leave
-            </button>
-            <button type="button" onClick={closeDeleteConversationModal}>
-              Cancel
-            </button>
-          </menu>
+        <form onSubmit={handleLeaveRoom}>
+          <div className="explanation">
+            <span className="emphasis">
+              You won&apos;t be able to rejoin it,
+            </span>{' '}
+            unless another participants adds you back.
+          </div>
+
+          <footer>
+            <menu>
+              <button
+                className="label-btn confirm-btn"
+                formMethod="dialog"
+                type="submit"
+              >
+                Yes, leave
+              </button>
+              <button
+                className="label-btn cancel-btn"
+                type="button"
+                onClick={closeDeleteConversationModal}
+              >
+                Cancel
+              </button>
+            </menu>
+          </footer>
         </form>
       </dialog>
     </>

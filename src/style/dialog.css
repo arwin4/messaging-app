@@ -82,4 +82,38 @@ dialog {
       height: 20px;
     }
   }
+
+  /* Confirmation dialog */
+  .confirmation {
+    padding-block-end: unset;
+
+    > form {
+      display: grid;
+      gap: 20px;
+
+      padding: 25px;
+
+      text-align: center;
+
+      .explanation.emphasis,
+      .explanation .emphasis {
+        font-weight: bolder;
+      }
+
+      footer > menu {
+        display: flex;
+
+        justify-content: center;
+        gap: 30px;
+
+        .confirm-btn {
+          background-color: var(--indigo-2);
+        }
+
+        .cancel-btn {
+          font-weight: lighter;
+        }
+      }
+    }
+  }
 }

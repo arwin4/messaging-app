@@ -35,22 +35,34 @@ export default function DeleteRoom({ room }) {
         text="Delete chat"
       />
 
-      <dialog ref={deleteRoomModal}>
-        <form onSubmit={handleDeleteConversation}>
-          <p>
-            If you delete this conversation, it will be forever lost to all
-            participants.
-          </p>
-          <p>Are you sure you want to delete this conversation?</p>
+      <dialog ref={deleteRoomModal} className="confirmation">
+        <header>
+          <h1>Delete chat?</h1>
+        </header>
 
-          <menu>
-            <button formMethod="dialog" type="submit">
-              Yes, delete
-            </button>
-            <button type="button" onClick={closeDeleteConversationModal}>
-              Cancel
-            </button>
-          </menu>
+        <form onSubmit={handleDeleteConversation}>
+          <div className="explanation emphasis">
+            It will be forever lost to all participants.
+          </div>
+
+          <footer>
+            <menu>
+              <button
+                className="label-btn confirm-btn"
+                formMethod="dialog"
+                type="submit"
+              >
+                Yes, delete
+              </button>
+              <button
+                className="label-btn cancel-btn"
+                type="button"
+                onClick={closeDeleteConversationModal}
+              >
+                Cancel
+              </button>
+            </menu>
+          </footer>
         </form>
       </dialog>
     </>
