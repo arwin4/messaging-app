@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import getJwt from '@utils/getJwt';
 import './style/MessageForm.css';
@@ -12,14 +12,16 @@ export default function MessageForm({ socketMessages }) {
 
   const currentUser = getCurrentUser();
 
-  // Reset message field after user sends a message
-  useEffect(() => {
-    // Check if message was sent by the current user
-    if (socketMessages.at(-1)?.author.username !== currentUser.username) return;
+  const [shouldClearInput, setShouldClearInput] = useState(true);
 
+  useEffect(() => {
+    // Autofocus on the message field on mount and after each message
     inputRef.current.focus();
-    inputRef.current.value = '';
-  }, [socketMessages]);
+
+    // Empty message field after user sends a message, but not on incoming messages
+    if (socketMessages.at(-1)?.author.username !== currentUser.username) return;
+    if (shouldClearInput) inputRef.current.value = '';
+  }, [socketMessages, shouldClearInput]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -43,6 +45,7 @@ export default function MessageForm({ socketMessages }) {
     if (res.status !== 200) {
       // TODO: handle error
       // return { error: 'Unable to send message.' };
+      setShouldClearInput(false);
     }
   }
 
