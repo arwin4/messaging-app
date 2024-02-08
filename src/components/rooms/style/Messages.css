@@ -47,4 +47,8 @@
     text-align: center;
     align-content: center;
   }
+
+  .no-messages {
+    color: var(--oc-gray-6);
+  }
 }
