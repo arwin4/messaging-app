@@ -49,10 +49,10 @@
   text-align: center;
 
   font-weight: 500;
-  color: var(--gray-8);
+  color: var(--oc-gray-8);
 
   background-color: var(--cool-gray);
-  background-color: var(--indigo-1);
+  background-color: var(--oc-indigo-1);
 
   .icon {
     height: 30px;

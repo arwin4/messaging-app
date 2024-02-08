@@ -9,7 +9,7 @@ input {
 
   &:focus-visible {
     transition: box-shadow 0.2s ease-in;
-    box-shadow: 0px 0px 6px 0px var(--indigo-3);
+    box-shadow: 0px 0px 6px 0px var(--oc-indigo-3);
     outline: none;
   }
 }

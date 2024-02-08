@@ -2,6 +2,7 @@
 @import 'button.css';
 @import 'dialog.css';
 @import 'input.css';
+@import 'open-color.css';
 
 html {
   /* Variables */
@@ -11,15 +12,6 @@ html {
   --antiflash-white: rgb(231, 231, 231);
   --red-pantone: hsla(353, 86%, 54%, 1);
   --fire-engine-red: hsla(350, 96%, 43%, 1);
-
-  --indigo-0: #edf2ff;
-  --indigo-1: #dbe4ff;
-  --indigo-2: #bac8ff;
-  --indigo-3: #91a7ff;
-  --indigo-4: #748ffc;
-
-  --gray-5: #adb5bd;
-  --gray-8: #343a40;
 }
 
 body {

@@ -23,7 +23,7 @@
     }
 
     .text-content {
-      background-color: var(--indigo-1);
+      background-color: var(--oc-indigo-1);
 
       width: fit-content;
       max-width: 500px;
