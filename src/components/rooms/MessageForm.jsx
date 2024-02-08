@@ -15,8 +15,9 @@ export default function MessageForm({ socketMessages }) {
   const [shouldClearInput, setShouldClearInput] = useState(true);
 
   useEffect(() => {
-    // Autofocus on the message field on mount and after each message
-    inputRef.current.focus();
+    // Autofocus on the message field on mount and after each message.
+    // Only do this on non-touch screens, keeping the virtual keyboard from showing automatically.
+    if (!matchMedia('(pointer:coarse)').matches) inputRef.current.focus();
 
     // Empty message field after user sends a message, but not on incoming messages
     if (socketMessages.at(-1)?.author.username !== currentUser.username) return;
