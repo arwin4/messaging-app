@@ -24,6 +24,8 @@ export default function Messages({ room, socketMessages }) {
 
   const fetchAndSocketMessages = messages.concat(socketMessages);
 
+  const noMessagesElement = <h2 className="no-messages">No messages yet.</h2>;
+
   const messagesElement = fetchAndSocketMessages.map((message) => {
     const isCurrentUserAuthorOfMessage =
       message.author.username === currentUser.username;
@@ -54,7 +56,11 @@ export default function Messages({ room, socketMessages }) {
     );
   });
 
-  return <div className="messages">{messagesElement}</div>;
+  return (
+    <div className="messages">
+      {fetchAndSocketMessages.length > 0 ? messagesElement : noMessagesElement}
+    </div>
+  );
 }
 
 /* Prop Types */

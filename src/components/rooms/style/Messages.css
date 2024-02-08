@@ -42,4 +42,9 @@
       }
     }
   }
+
+  &:has(.no-messages) {
+    text-align: center;
+    align-content: center;
+  }
 }
