@@ -103,8 +103,8 @@ dialog {
       footer > menu {
         display: flex;
 
-        justify-content: center;
-        gap: 30px;
+        justify-content: space-evenly;
+        gap: min(10px);
 
         .confirm-btn {
           background-color: var(--oc-indigo-2);
