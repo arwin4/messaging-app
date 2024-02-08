@@ -31,7 +31,7 @@ export default function RoomSettings({ room, setMembersChanged }) {
         <Header />
         <menu className="settings">
           <DeleteRoom room={room} />
-          <LeaveRoom room={room} />
+          {room.members.length > 1 && <LeaveRoom room={room} />}
         </menu>
         <MemberList room={room} setMembersChanged={setMembersChanged} />
         <AddMembers room={room} setMembersChanged={setMembersChanged} />
