@@ -1,0 +1,96 @@
+.friends {
+  --general-spacing: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 500px;
+
+  padding: var(--general-spacing);
+
+  > * {
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1 {
+    align-self: center;
+    padding: 5px var(--general-spacing);
+
+    border-radius: 5px;
+
+    width: fit-content;
+
+    text-align: center;
+    color: var(--oc-gray-8);
+    font-size: 1.5rem;
+
+    background-color: var(--oc-gray-3);
+  }
+
+  .no-friends {
+    padding: var(--general-spacing) 0;
+    gap: var(--general-spacing);
+    align-items: center;
+
+    .notice {
+      text-align: center;
+    }
+
+    .tip {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+
+      padding: 10px;
+      gap: 10px;
+      border-radius: 20px;
+      max-width: 500px;
+
+      background-color: var(--oc-indigo-1);
+
+      .icon {
+        height: 30px;
+        color: var(--oc-indigo-5);
+      }
+    }
+  }
+
+  .friend-list {
+    padding: var(--general-spacing) 0;
+    gap: var(--general-spacing);
+
+    .friend-wrapper {
+      display: grid;
+      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+      padding: 10px;
+      gap: 10px;
+
+      border-radius: 20px;
+      background-color: var(--oc-indigo-0);
+
+      .friend-username {
+        min-width: 0; /* Prevent grid blowout */
+      }
+
+      & menu {
+        display: flex;
+        justify-content: end;
+
+        gap: var(--general-spacing);
+      }
+    }
+  }
+
+  .add-friend-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: var(--general-spacing);
+  }
+}

@@ -1,19 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, NavLink, useNavigate } from 'react-router-dom';
+import { Form, Link, useNavigate } from 'react-router-dom';
 import './style/FriendList.css';
 import createRoom from '@utils/fetch/createRoom';
 import addMemberToRoom from '@utils/fetch/addMemberToRoom';
 import friendPropType from '@components/propTypes/friendPropType';
+import LabelButton from '@components/buttons/LabelButton';
+import LinkButton from '@components/buttons/LinkButton';
 
 export default function FriendList({ friends }) {
   return (
-    <div className="friend-list">
-      <h2>Friends</h2>
-      {friends.map((friend) => (
-        <FriendListItem friend={friend} key={friend._id} />
-      ))}
-    </div>
+    <>
+      <h1>Friends</h1>
+      {friends.length > 0 && (
+        <div className="friend-list">
+          {friends.map((friend) => (
+            <FriendListItem friend={friend} key={friend._id} />
+          ))}
+        </div>
+      )}
+    </>
   );
 }
 
@@ -27,21 +33,35 @@ async function openRoom(friend, navigate) {
 function FriendListItem({ friend }) {
   const navigate = useNavigate();
 
-  const friendLink = friend.duoRoomId ? (
-    <NavLink to={`/conversations/${friend.duoRoomId}`}>
-      <input name="friend-to-delete" value={friend.username} readOnly />
-    </NavLink>
-  ) : (
-    <NavLink onClick={() => openRoom(friend, navigate)}>
-      <input name="friend-to-delete" value={friend.username} readOnly />
-    </NavLink>
-  );
-
   return (
     // Use react router's Form to leverage loaders & actions
     <Form className="friend-wrapper" method="DELETE">
-      {friendLink}
-      <button type="submit">Remove friend</button>
+      <input
+        className="friend-username"
+        name="friend-username"
+        value={friend.username}
+        readOnly
+      />
+      <menu>
+        {friend.duoRoomId ? (
+          <Link to={`/conversations/${friend.duoRoomId}`}>
+            <LinkButton icon="ri:chat-4-line" text="Go to chat" inline="true" />
+          </Link>
+        ) : (
+          <LabelButton
+            onClick={() => openRoom(friend, navigate)}
+            icon="ri:chat-new-fill"
+            text="New chat"
+            inline="true"
+          />
+        )}
+        <LabelButton
+          type="submit"
+          icon="ri:close-line"
+          text="Remove"
+          inline="true"
+        />
+      </menu>
     </Form>
   );
 }

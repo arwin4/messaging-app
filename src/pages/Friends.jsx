@@ -6,6 +6,8 @@ import fetchDuoRoom from '@utils/fetch/fetchDuoRoom';
 import fetchAndSetCurrentUser from '@utils/fetch/fetchAndSetCurrentUser';
 import AddFriend from '@components/friends/AddFriend';
 import FriendList from '@components/friends/FriendList';
+import './style/Friends.css';
+import { InlineIcon } from '@iconify/react';
 
 export default function Friends() {
   const friends = useLoaderData();
@@ -13,24 +15,29 @@ export default function Friends() {
   // Suggest a bot user to add if the user doesn't have friends
   const noFriendsTip =
     friends.length === 0 ? (
-      <div className="no-friends-tip">
-        <p>You haven&apos;t added any friends yet.</p>
-        <p>
-          Don&apos;t know who to add? You can always add The Count. He loves
-          counting the number of messages you send him.
-        </p>
-        <p>
-          His username is <em>the count</em>.
-        </p>
+      <div className="no-friends">
+        <div className="notice">You haven&apos;t added any friends yet.</div>
+        <div className="tip">
+          <InlineIcon
+            className="icon"
+            icon="ri:lightbulb-flash-line"
+            height="unset"
+          />
+          <p>Feeling lonely? </p>
+          <p>
+            You can always add The Count. He loves counting the number of
+            messages you send him. His username is <em>the count</em>.
+          </p>
+        </div>
       </div>
     ) : undefined;
 
   return (
-    <>
-      {noFriendsTip}
+    <div className="friends">
       <FriendList friends={friends} />
+      {noFriendsTip}
       <AddFriend />
-    </>
+    </div>
   );
 }
 
@@ -87,7 +94,7 @@ export async function friendsAction({ request }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        friendsToDelete: [data.get('friend-to-delete')],
+        friendsToDelete: [data.get('friend-username')],
       }),
     });
 
