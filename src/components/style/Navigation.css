@@ -38,6 +38,7 @@
       .description {
         /* TODO: pick better accent color */
         color: var(--tomato);
+        font-weight: bolder;
       }
 
       .active-indicator {
