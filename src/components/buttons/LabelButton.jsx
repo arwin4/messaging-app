@@ -1,15 +1,14 @@
 /* eslint-disable react/button-has-type */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { InlineIcon } from '@iconify/react';
 
 export default function LabelButton({ onClick, icon, inline, text, type }) {
+  const btnClass = classNames('label-btn', { inline });
+
   return (
-    <button
-      type={type}
-      className={`label-btn ${inline ? 'inline' : ''}`}
-      onClick={onClick}
-    >
+    <button type={type} className={btnClass} onClick={onClick}>
       <InlineIcon className="icon" icon={icon} height="unset" />
       {text}
     </button>
