@@ -28,4 +28,7 @@ body {
 main {
   padding-bottom: 60px; /* Prevent navbar overlapping at bottom of element */
   width: 100%;
+
+  display: grid;
+  justify-items: center;
 }
