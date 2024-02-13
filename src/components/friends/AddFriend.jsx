@@ -5,6 +5,7 @@ import { useActionData, useFetcher } from 'react-router-dom';
 export default function AddFriend() {
   const actionData = useActionData();
   const fetcher = useFetcher();
+  const busy = fetcher.state !== 'idle';
 
   return (
     <div className="add-friend">
@@ -17,6 +18,7 @@ export default function AddFriend() {
           name="new-friend"
           maxLength={100}
           required
+          disabled={busy}
         />
         <LabelButton
           icon="ri:user-add-line"
