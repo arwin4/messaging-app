@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Link, useNavigate } from 'react-router-dom';
+import { Form, Link, useFetcher, useNavigate } from 'react-router-dom';
 import './style/FriendList.css';
 import createRoom from '@utils/fetch/createRoom';
 import addMemberToRoom from '@utils/fetch/addMemberToRoom';
@@ -31,11 +31,12 @@ async function openRoom(friend, navigate) {
 }
 
 function FriendListItem({ friend }) {
+  const fetcher = useFetcher();
   const navigate = useNavigate();
 
   return (
     // Use react router's Form to leverage loaders & actions
-    <Form className="friend-wrapper" method="DELETE">
+    <fetcher.Form className="friend-wrapper" method="DELETE">
       <input
         className="friend-username"
         name="friend-username"
@@ -60,9 +61,10 @@ function FriendListItem({ friend }) {
           icon="ri:close-line"
           text="Remove"
           inline="true"
+          fetcherState={fetcher.state}
         />
       </menu>
-    </Form>
+    </fetcher.Form>
   );
 }
 

@@ -1,11 +1,21 @@
 /* eslint-disable react/button-has-type */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { InlineIcon } from '@iconify/react';
 
-export default function LabelButton({ onClick, icon, inline, text, type }) {
-  const btnClass = classNames('label-btn', { inline });
+export default function LabelButton({
+  onClick,
+  icon,
+  inline,
+  text,
+  type,
+  fetcherState,
+}) {
+  const btnClass = classNames('label-btn', {
+    inline,
+    pending: fetcherState === 'loading' || fetcherState === 'submitting',
+  });
 
   return (
     <button type={type} className={btnClass} onClick={onClick}>
@@ -22,10 +32,12 @@ LabelButton.propTypes = {
   inline: PropTypes.string,
   text: PropTypes.string.isRequired,
   type: PropTypes.string,
+  fetcherState: PropTypes.string,
 };
 
 LabelButton.defaultProps = {
   onClick: () => null,
   inline: '',
   type: 'button',
+  fetcherState: 'idle',
 };
