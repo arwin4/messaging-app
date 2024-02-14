@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Link, useFetcher, useNavigate } from 'react-router-dom';
+import { Link, useFetcher, useNavigate, useNavigation } from 'react-router-dom';
 import './style/FriendList.css';
 import createRoom from '@utils/fetch/createRoom';
 import addMemberToRoom from '@utils/fetch/addMemberToRoom';
@@ -31,8 +31,20 @@ async function openRoom(friend, navigate) {
 }
 
 function FriendListItem({ friend }) {
+  const navigation = useNavigation();
   const fetcher = useFetcher();
   const navigate = useNavigate();
+
+  let destinationPath;
+  if (friend.duoRoomId) {
+    destinationPath = `/conversations/${friend.duoRoomId}`;
+  }
+
+  // Give 'Go to chat' button its own busy state
+  let busy = '';
+  if (navigation.location?.pathname === destinationPath) {
+    busy = navigation.state;
+  }
 
   return (
     // Use react router's Form to leverage loaders & actions
@@ -45,8 +57,13 @@ function FriendListItem({ friend }) {
       />
       <menu>
         {friend.duoRoomId ? (
-          <Link to={`/conversations/${friend.duoRoomId}`}>
-            <LinkButton icon="ri:chat-4-line" text="Go to chat" inline="true" />
+          <Link to={destinationPath}>
+            <LinkButton
+              icon="ri:chat-4-line"
+              text="Go to chat"
+              inline="true"
+              busy={busy}
+            />
           </Link>
         ) : (
           <LabelButton
@@ -61,7 +78,7 @@ function FriendListItem({ friend }) {
           icon="ri:close-line"
           text="Remove"
           inline="true"
-          fetcherState={fetcher.state}
+          busy={fetcher.state}
         />
       </menu>
     </fetcher.Form>

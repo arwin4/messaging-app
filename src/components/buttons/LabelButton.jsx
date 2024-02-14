@@ -10,11 +10,11 @@ export default function LabelButton({
   inline,
   text,
   type,
-  fetcherState,
+  busy,
 }) {
   const btnClass = classNames('label-btn', {
     inline,
-    pending: fetcherState === 'loading' || fetcherState === 'submitting',
+    pending: busy === 'loading' || busy === 'submitting',
   });
 
   return (
@@ -32,12 +32,12 @@ LabelButton.propTypes = {
   inline: PropTypes.string,
   text: PropTypes.string.isRequired,
   type: PropTypes.string,
-  fetcherState: PropTypes.string,
+  busy: PropTypes.string,
 };
 
 LabelButton.defaultProps = {
   onClick: () => null,
   inline: '',
   type: 'button',
-  fetcherState: 'idle',
+  busy: 'idle',
 };

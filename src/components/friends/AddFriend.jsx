@@ -25,7 +25,7 @@ export default function AddFriend() {
           inline="true"
           text="Add friend"
           type="submit"
-          fetcherState={fetcher.state}
+          busy={fetcher.state}
         />
 
         {actionData && actionData.error && (
