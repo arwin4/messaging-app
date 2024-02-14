@@ -5,17 +5,17 @@ import getUser from '@utils/fetch/getUser';
 import handleAddMember from './handleAddMember';
 
 export default function AddMemberByUsername({ room }) {
-  const [pendingAddMember, setPendingAddMember] = useState(false);
+  const [addMemberBusy, setAddMemberBusy] = useState(false);
 
   async function handleAddMemberByUsername(e, localRoom) {
     e.preventDefault();
-    setPendingAddMember(true);
+    setAddMemberBusy(true);
     const memberUsername = e.target.username.value;
     const member = await getUser(memberUsername);
     const memberId = member._id;
 
     await handleAddMember(memberId, localRoom);
-    setPendingAddMember(false);
+    setAddMemberBusy(false);
     e.target.username.value = '';
   }
 
@@ -36,7 +36,7 @@ export default function AddMemberByUsername({ room }) {
           name="username"
           autoComplete="off"
           required
-          disabled={pendingAddMember}
+          disabled={addMemberBusy}
         />
       </form>
     </div>

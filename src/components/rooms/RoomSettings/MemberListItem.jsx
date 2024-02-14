@@ -5,10 +5,10 @@ import React, { useState } from 'react';
 import roomPropType from '@components/propTypes/roomPropType';
 
 export default function MemberListItem({ room, member }) {
-  const [pendingRemoveMember, setPendingRemoveMember] = useState(false);
+  const [removeMemberBusy, setRemoveMemberBusy] = useState(false);
 
   async function removeMember(memberId) {
-    setPendingRemoveMember(true);
+    setRemoveMemberBusy(true);
     await deleteMember(room._id, memberId);
   }
 
@@ -20,7 +20,7 @@ export default function MemberListItem({ room, member }) {
         icon="ri:close-line"
         text="Remove"
         inline="true"
-        busy={pendingRemoveMember}
+        busy={removeMemberBusy}
       />
     </li>
   );

@@ -5,10 +5,10 @@ import friendPropType from '@components/propTypes/friendPropType';
 import handleAddMember from './handleAddMember';
 
 export default function FriendListItem({ room, friend }) {
-  const [pendingAddFriend, setPendingAddFriend] = useState(false);
+  const [addFriendBusy, setAddFriendBusy] = useState(false);
 
   async function handleAddFriend(userId, localRoom) {
-    setPendingAddFriend(true);
+    setAddFriendBusy(true);
     await handleAddMember(userId, localRoom);
   }
 
@@ -18,7 +18,7 @@ export default function FriendListItem({ room, friend }) {
       icon="ri:add-line"
       text={friend.username}
       inline="true"
-      busy={pendingAddFriend}
+      busy={addFriendBusy}
     />
   );
 }
