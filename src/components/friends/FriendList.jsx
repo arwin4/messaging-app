@@ -34,6 +34,7 @@ function FriendListItem({ friend }) {
   const navigation = useNavigation();
   const fetcher = useFetcher();
   const navigate = useNavigate();
+  const removeChatBusy = fetcher.state !== 'idle';
 
   let destinationPath;
   if (friend.duoRoomId) {
@@ -41,9 +42,9 @@ function FriendListItem({ friend }) {
   }
 
   // Give 'Go to chat' button its own busy state
-  let busy = '';
+  let goToChatBusy = false;
   if (navigation.location?.pathname === destinationPath) {
-    busy = navigation.state;
+    goToChatBusy = true;
   }
 
   return (
@@ -62,7 +63,7 @@ function FriendListItem({ friend }) {
               icon="ri:chat-4-line"
               text="Go to chat"
               inline="true"
-              busy={busy}
+              busy={goToChatBusy}
             />
           </Link>
         ) : (
@@ -78,7 +79,7 @@ function FriendListItem({ friend }) {
           icon="ri:close-line"
           text="Remove"
           inline="true"
-          busy={fetcher.state}
+          busy={removeChatBusy}
         />
       </menu>
     </fetcher.Form>

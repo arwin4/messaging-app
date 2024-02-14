@@ -12,10 +12,7 @@ export default function LabelButton({
   type,
   busy,
 }) {
-  const btnClass = classNames('label-btn', {
-    inline,
-    pending: busy === 'loading' || busy === 'submitting',
-  });
+  const btnClass = classNames('label-btn', { inline, busy });
 
   return (
     <button type={type} className={btnClass} onClick={onClick}>
@@ -32,12 +29,12 @@ LabelButton.propTypes = {
   inline: PropTypes.string,
   text: PropTypes.string.isRequired,
   type: PropTypes.string,
-  busy: PropTypes.string,
+  busy: PropTypes.bool,
 };
 
 LabelButton.defaultProps = {
   onClick: () => null,
   inline: '',
   type: 'button',
-  busy: 'idle',
+  busy: false,
 };

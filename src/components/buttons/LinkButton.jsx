@@ -12,10 +12,10 @@ LinkButton.propTypes = {
   inline: PropTypes.string,
   text: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
-  busy: PropTypes.string,
+  busy: PropTypes.bool,
 };
 
 LinkButton.defaultProps = {
   inline: '',
-  busy: 'idle',
+  busy: false,
 };
