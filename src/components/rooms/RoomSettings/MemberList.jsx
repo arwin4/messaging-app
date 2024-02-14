@@ -1,17 +1,12 @@
 import React from 'react';
 import getCurrentUser from '@utils/getCurrentUser';
-import deleteMember from '@utils/fetch/deleteMember';
 import roomPropType from '@components/propTypes/roomPropType';
 import './style/MemberList.css';
 import { InlineIcon } from '@iconify/react';
-import LabelButton from '@components/buttons/LabelButton';
+import MemberListItem from './MemberListItem';
 
 export default function MemberList({ room }) {
   const currentUser = getCurrentUser();
-
-  async function removeMember(memberId) {
-    await deleteMember(room._id, memberId);
-  }
 
   return (
     <div className="member-list-container">
@@ -30,15 +25,7 @@ export default function MemberList({ room }) {
           // Don't display current user in member list
           if (member.username === currentUser.username) return null;
           return (
-            <li className="member" key={member._id}>
-              <div className="username">{member.username}</div>
-              <LabelButton
-                onClick={() => removeMember(member._id)}
-                icon="ri:close-line"
-                text="Remove"
-                inline="true"
-              />
-            </li>
+            <MemberListItem key={member._id} room={room} member={member} />
           );
         })}
       </ul>
