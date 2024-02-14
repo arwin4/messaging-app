@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import convertToGroupRoom from '@utils/fetch/convertToGroupRoom';
 import addMemberToRoom from '@utils/fetch/addMemberToRoom';
 import getCurrentUser from '@utils/getCurrentUser';
@@ -87,12 +87,20 @@ export default function AddMembers({ room }) {
 }
 
 function FriendListItem({ room, friend }) {
+  const [pendingAddFriend, setPendingAddFriend] = useState(false);
+
+  async function handleAddFriend(userId, localRoom) {
+    setPendingAddFriend(true);
+    await handleAddMember(userId, localRoom);
+  }
+
   return (
     <LabelButton
-      onClick={() => handleAddMember(friend._id, room)}
+      onClick={() => handleAddFriend(friend._id, room)}
       icon="ri:add-line"
       text={friend.username}
       inline="true"
+      busy={pendingAddFriend}
     />
   );
 }
