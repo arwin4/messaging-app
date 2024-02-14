@@ -1,24 +1,46 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import {
+  useFetcher,
+  useLoaderData,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
+import getJwt from '@utils/getJwt';
 import Messages from '@components/rooms/Messages';
 import MessagesForm from '@components/rooms/MessageForm';
-import useRoom from '@hooks/rooms/useRoom';
 import Header from '@components/rooms/Header';
 import socket from '../socket.io/socket';
 import './style/Room.css';
 
+/** == Room data fetching logic ==
+ *
+ * On initial load, the room object (which includes its messages) is fetched
+ * using a loader and assigned to the 'room' variable.
+ *
+ * The socket.io instance receives subsequent changes to the room's member
+ * array. The changed room object is fetched again; this time using useFetcher.
+ * It is again assigned to the 'room' variable.
+ *
+ * New messages are received separately by the socket.io instance. (That
+ * includes messages sent by the user.) The Messages component concatenates
+ * these new messages with the ones fetched in the previous steps.
+ *
+ * Using the loader and fetcher in this way minimizes the amount of state
+ * management necessary, reduces prop drilling and altogether avoids having to
+ * implement a custom hook for fetching.
+ */
+
 export default function Room() {
+  const loaderData = useLoaderData();
   const navigate = useNavigate();
   const { id } = useParams();
+  const fetcher = useFetcher();
 
-  const [membersChanged, setMembersChanged] = useState(false);
+  // Use the most recent fetch
+  const room = fetcher.data ? fetcher.data : loaderData;
+
   // When the socket receives a new message, it is pushed in this array
   const [socketMessages, setSocketMessages] = useState([]);
-  const {
-    room,
-    loading: loadingRoom,
-    error: fetchError,
-  } = useRoom(id, membersChanged, setSocketMessages);
 
   // Socket
   useEffect(() => {
@@ -36,7 +58,7 @@ export default function Room() {
     }
 
     function handleMembersChanged() {
-      setMembersChanged((prev) => !prev);
+      fetcher.load();
     }
 
     function handleRoomDeleted() {
@@ -60,17 +82,29 @@ export default function Room() {
     };
   }, []);
 
-  if (fetchError)
-    return <>There was an error loading the conversation: {fetchError}</>;
-  if (loadingRoom) return <>Loading conversation...</>;
-
   return (
     // TODO: show number of members
     <div className="room">
       {/* <Title room={room} /> */}
-      <Header room={room} setMembersChanged={setMembersChanged} />
+      <Header room={room} />
       <Messages room={room} socketMessages={socketMessages} />
-      <MessagesForm room={room}  socketMessages={socketMessages} />
+      <MessagesForm room={room} socketMessages={socketMessages} />
     </div>
   );
+}
+
+export async function roomLoader({ params }) {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_SERVER_URL}/rooms/${params.id}`,
+    {
+      method: 'GET',
+      headers: { Authorization: `Bearer ${getJwt()}` },
+    },
+  );
+
+  if (!res.ok) {
+    throw new Response('Unable to load room', { status: res.status });
+  }
+
+  return res.json();
 }

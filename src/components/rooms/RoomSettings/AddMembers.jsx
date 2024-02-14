@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import convertToGroupRoom from '@utils/fetch/convertToGroupRoom';
 import addMemberToRoom from '@utils/fetch/addMemberToRoom';
 import getCurrentUser from '@utils/getCurrentUser';
@@ -10,28 +9,27 @@ import './style/AddMembers.css';
 import { InlineIcon } from '@iconify/react';
 import LabelButton from '@components/buttons/LabelButton';
 
-async function handleAddMember(userId, room, setMembersChanged) {
+async function handleAddMember(userId, room) {
   if (!room.isGroup) {
     const res = await convertToGroupRoom(room._id);
     // TODO: handle error
   }
   // TODO: handle error
   const res = await addMemberToRoom(room._id, userId);
-  setMembersChanged((prev) => !prev); // Trigger fetch effect
 }
 
-async function handleAddMemberByUsername(e, room, setMembersChanged) {
+async function handleAddMemberByUsername(e, room) {
   e.preventDefault();
   const memberUsername = e.target.username.value;
   const member = await getUser(memberUsername);
   const memberId = member._id;
 
-  await handleAddMember(memberId, room, setMembersChanged);
+  await handleAddMember(memberId, room);
   e.target.username.value = '';
 }
 
 // TODO: Add members by username
-export default function AddMembers({ room, setMembersChanged }) {
+export default function AddMembers({ room }) {
   const currentUser = getCurrentUser();
   const { friends } = currentUser;
 
@@ -48,12 +46,7 @@ export default function AddMembers({ room, setMembersChanged }) {
             return null;
 
           return (
-            <FriendListItem
-              room={room}
-              friend={friend}
-              setMembersChanged={setMembersChanged}
-              key={friend._id}
-            />
+            <FriendListItem room={room} friend={friend} key={friend._id} />
           );
         })}
       </menu>
@@ -76,9 +69,7 @@ export default function AddMembers({ room, setMembersChanged }) {
           Add member by username
         </h2>
         <form
-          onSubmit={(e) =>
-            handleAddMemberByUsername(e, room, setMembersChanged)
-          }
+          onSubmit={(e) => handleAddMemberByUsername(e, room)}
           className="add-member-by-username"
         >
           <input
@@ -95,10 +86,10 @@ export default function AddMembers({ room, setMembersChanged }) {
   );
 }
 
-function FriendListItem({ room, friend, setMembersChanged }) {
+function FriendListItem({ room, friend }) {
   return (
     <LabelButton
-      onClick={() => handleAddMember(friend._id, room, setMembersChanged)}
+      onClick={() => handleAddMember(friend._id, room)}
       icon="ri:add-line"
       text={friend.username}
       inline="true"
@@ -109,11 +100,9 @@ function FriendListItem({ room, friend, setMembersChanged }) {
 /* Prop Types */
 AddMembers.propTypes = {
   room: roomPropType.isRequired,
-  setMembersChanged: PropTypes.func.isRequired,
 };
 
 FriendListItem.propTypes = {
   room: roomPropType.isRequired,
   friend: friendPropType.isRequired,
-  setMembersChanged: PropTypes.func.isRequired,
 };

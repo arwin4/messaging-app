@@ -22,7 +22,15 @@ export default function Messages({ room, socketMessages }) {
     scrollToNewMessage();
   }, [socketMessages]);
 
-  const fetchAndSocketMessages = messages.concat(socketMessages);
+  // Concatenate the fetched messages with the socketMessages, ensuring there are no
+  // duplicates.
+  const previouslySeenMessageIds = messages.map((message) => message._id);
+  const socketMessagesNotPreviouslySeen = socketMessages.filter(
+    (message) => !previouslySeenMessageIds.includes(message._id),
+  );
+  const fetchAndSocketMessages = messages.concat(
+    socketMessagesNotPreviouslySeen,
+  );
 
   const noMessagesElement = <h2 className="no-messages">No messages yet.</h2>;
 

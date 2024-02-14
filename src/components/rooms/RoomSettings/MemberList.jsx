@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import getCurrentUser from '@utils/getCurrentUser';
 import deleteMember from '@utils/fetch/deleteMember';
 import roomPropType from '@components/propTypes/roomPropType';
@@ -7,12 +6,11 @@ import './style/MemberList.css';
 import { InlineIcon } from '@iconify/react';
 import LabelButton from '@components/buttons/LabelButton';
 
-export default function MemberList({ room, setMembersChanged }) {
+export default function MemberList({ room }) {
   const currentUser = getCurrentUser();
 
   async function removeMember(memberId) {
     await deleteMember(room._id, memberId);
-    setMembersChanged((prev) => !prev); // Trigger fetch effect
   }
 
   return (
@@ -51,5 +49,4 @@ export default function MemberList({ room, setMembersChanged }) {
 /* Prop Types */
 MemberList.propTypes = {
   room: roomPropType.isRequired,
-  setMembersChanged: PropTypes.func.isRequired,
 };

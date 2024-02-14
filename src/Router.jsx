@@ -7,7 +7,7 @@ import Login from '@pages/Login';
 
 // TODO: add error element/page
 // TODO: add loading element
-import Room from '@pages/Room';
+import Room, { roomLoader } from '@pages/Room';
 import Friends, { friendsLoader, friendsAction } from '@pages/Friends';
 import { roomsLoader } from '@components/dashboard/RoomOverview';
 import Error from '@pages/Error';
@@ -35,6 +35,7 @@ function Router() {
         {
           path: 'conversations/:id',
           element: <Room />,
+          loader: roomLoader,
         },
       ],
     },
