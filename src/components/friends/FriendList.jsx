@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useFetcher, useNavigate, useNavigation } from 'react-router-dom';
 import './style/FriendList.css';
@@ -24,7 +24,8 @@ export default function FriendList({ friends }) {
 }
 
 // Creates a new room, adds friend to it, then redirects to its page
-async function openRoom(friend, navigate) {
+async function openRoom(friend, navigate, setOpenRoomBusy) {
+  setOpenRoomBusy(true);
   const newRoom = await createRoom();
   const newRoomWithFriendAdded = await addMemberToRoom(newRoom._id, friend._id);
   navigate(`/conversations/${newRoomWithFriendAdded._id}`);
@@ -34,6 +35,7 @@ function FriendListItem({ friend }) {
   const navigation = useNavigation();
   const fetcher = useFetcher();
   const navigate = useNavigate();
+  const [openRoomBusy, setOpenRoomBusy] = useState(false);
   const removeChatBusy = fetcher.state !== 'idle';
 
   let destinationPath;
@@ -68,10 +70,11 @@ function FriendListItem({ friend }) {
           </Link>
         ) : (
           <LabelButton
-            onClick={() => openRoom(friend, navigate)}
+            onClick={() => openRoom(friend, navigate, setOpenRoomBusy)}
             icon="ri:chat-new-fill"
             text="New chat"
             inline="true"
+            busy={openRoomBusy}
           />
         )}
         <LabelButton
