@@ -1,11 +1,20 @@
 import LabelButton from '@components/buttons/LabelButton';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useActionData, useFetcher } from 'react-router-dom';
 
 export default function AddFriend() {
   const actionData = useActionData();
   const fetcher = useFetcher();
   const busy = fetcher.state !== 'idle';
+  const inputRef = useRef();
+
+  useEffect(() => {
+    // Autofocus and clear input on submit
+    if (fetcher.state === 'idle') {
+      inputRef.current.value = '';
+      inputRef.current.focus();
+    }
+  }, [fetcher.state]);
 
   return (
     <div className="add-friend">
@@ -19,6 +28,7 @@ export default function AddFriend() {
           maxLength={100}
           required
           disabled={busy}
+          ref={inputRef}
         />
         <LabelButton
           icon="ri:user-add-line"
