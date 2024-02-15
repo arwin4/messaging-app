@@ -6,5 +6,17 @@
     padding: 25px 15px;
 
     place-self: center;
+
+    /* Make buttons smaller when there are three buttons on a small screen.
+    Check for 6 elements because for every button, there's a dialog. */
+    &:has(> :nth-child(6):last-child) {
+      @media (max-width: 768px) {
+        gap: 10px;
+        width: 90%;
+        .label-btn {
+          min-width: 60px;
+        }
+      }
+    }
   }
 }

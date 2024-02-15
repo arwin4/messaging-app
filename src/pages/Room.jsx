@@ -61,6 +61,11 @@ export default function Room() {
       fetcher.load();
     }
 
+    function handleMessagesCleared() {
+      setSocketMessages([]);
+      fetcher.load();
+    }
+
     function handleRoomDeleted() {
       // TODO: show message that explains why the user was redirected
       navigate('/');
@@ -69,6 +74,7 @@ export default function Room() {
     socket.on('connect', setupListener);
     socket.on('new-message', handleNewMessage);
     socket.on('members-changed', handleMembersChanged);
+    socket.on('messages-cleared', handleMessagesCleared);
     socket.on('room-deleted', handleRoomDeleted);
 
     return () => {
@@ -78,6 +84,7 @@ export default function Room() {
       socket.off('new-message', handleNewMessage);
       socket.off('connect', setupListener);
       socket.off('members-changed', handleMembersChanged);
+      socket.off('messages-cleared', handleMessagesCleared);
       socket.off('room-deleted', handleRoomDeleted);
     };
   }, []);
@@ -85,8 +92,7 @@ export default function Room() {
   return (
     // TODO: show number of members
     <div className="room">
-      {/* <Title room={room} /> */}
-      <Header room={room} />
+      <Header room={room} socketMessages={socketMessages} />
       <Messages room={room} socketMessages={socketMessages} />
       <MessagesForm room={room} socketMessages={socketMessages} />
     </div>

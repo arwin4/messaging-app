@@ -1,14 +1,16 @@
 import React, { useRef } from 'react';
 import roomPropType from '@components/propTypes/roomPropType';
 import { InlineIcon } from '@iconify/react';
+import socketMessagesPropType from '@components/propTypes/socketMessagesPropType';
 import MemberList from './RoomSettings/MemberList';
 import AddMembers from './RoomSettings/AddMembers';
+import ClearMessages from './RoomSettings/ClearMessages';
 import './RoomSettings/style/ManageMembers.css';
 import LeaveRoom from './RoomSettings/LeaveRoom';
 import DeleteRoom from './RoomSettings/DeleteRoom';
 import Header from './RoomSettings/Header';
 
-export default function RoomSettings({ room }) {
+export default function RoomSettings({ room, socketMessages }) {
   const manageMembersModal = useRef();
 
   function openManageMembersModal() {
@@ -31,6 +33,9 @@ export default function RoomSettings({ room }) {
         <menu className="settings">
           <DeleteRoom room={room} />
           {room.members.length > 1 && <LeaveRoom room={room} />}
+          {room.messages.length + socketMessages.length > 0 && (
+            <ClearMessages room={room} />
+          )}
         </menu>
         <MemberList room={room} />
         <AddMembers room={room} />
@@ -42,4 +47,5 @@ export default function RoomSettings({ room }) {
 /* Prop Types */
 RoomSettings.propTypes = {
   room: roomPropType.isRequired,
+  socketMessages: socketMessagesPropType.isRequired,
 };

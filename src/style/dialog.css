@@ -9,7 +9,7 @@ dialog {
 
   transition: opacity 0.3s ease-in;
 
-  width: min(90vw, 400px);
+  width: min(90vw, 450px);
 
   border-radius: 25px;
   border-width: 0;
