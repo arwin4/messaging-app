@@ -6,10 +6,10 @@ import RequireAuth from './auth/RequireAuth';
 export default function RequireAuthLayout() {
   return (
     <RequireAuth>
-      <Navigation />
       <main>
         <Outlet />
       </main>
+      <Navigation />
     </RequireAuth>
   );
 }
