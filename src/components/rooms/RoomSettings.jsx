@@ -5,16 +5,16 @@ import socketMessagesPropType from '@components/propTypes/socketMessagesPropType
 import MemberList from './RoomSettings/MemberList';
 import AddMembers from './RoomSettings/AddMembers';
 import ClearMessages from './RoomSettings/ClearMessages';
-import './RoomSettings/style/ManageMembers.css';
+import './RoomSettings/style/RoomSettings.css';
 import LeaveRoom from './RoomSettings/LeaveRoom';
 import DeleteRoom from './RoomSettings/DeleteRoom';
 import Header from './RoomSettings/Header';
 
 export default function RoomSettings({ room, socketMessages }) {
-  const manageMembersModal = useRef();
+  const roomSettingsModal = useRef();
 
-  function openManageMembersModal() {
-    manageMembersModal.current.showModal();
+  function openRoomSettingsModal() {
+    roomSettingsModal.current.showModal();
   }
 
   return (
@@ -22,13 +22,13 @@ export default function RoomSettings({ room, socketMessages }) {
       <button
         className="no-label-btn"
         type="button"
-        onClick={openManageMembersModal}
+        onClick={openRoomSettingsModal}
         aria-label="Chat settings"
       >
         <InlineIcon className="icon" icon="ri:settings-4-line" height="unset" />
       </button>
 
-      <dialog className="manage-members-dialog" ref={manageMembersModal}>
+      <dialog className="room-settings-modal" ref={roomSettingsModal}>
         <Header />
         <menu className="settings">
           <DeleteRoom room={room} />
