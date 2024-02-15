@@ -9,7 +9,7 @@ export default function Header({ room, socketMessages }) {
   return (
     <header className="room-header">
       <BackToRoomsButton />
-      <h1>Group chat</h1>
+      <h1>Chat</h1>
       <RoomSettings room={room} socketMessages={socketMessages} />
     </header>
   );
