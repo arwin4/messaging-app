@@ -80,8 +80,10 @@ export async function roomsLoader() {
     method: 'GET',
     headers: { Authorization: `Bearer ${getJwt()}` },
   });
-  if (res.status === 401) {
-    throw new Response('Unauthorized', { status: res.status });
+
+  if (!res.ok) {
+    const { errors } = await res.json();
+    throw new Response(errors[0].title, { status: res.status });
   }
 
   const fetchedRooms = await res.json();
