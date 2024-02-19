@@ -1,0 +1,13 @@
+.error {
+  place-self: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  padding: 25px;
+  gap: 10px;
+  border-radius: 25px;
+  max-width: 500px;
+
+  background-color: var(--oc-indigo-1);
+}
