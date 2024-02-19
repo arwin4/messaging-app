@@ -3,9 +3,15 @@ import { Link, Navigate, useRouteError } from 'react-router-dom';
 
 export default function Error() {
   const error = useRouteError();
-  console.log(error);
 
   switch (error.status) {
+    case 400:
+      return (
+        <div>
+          {error.data} <Link to="/">Back to homepage</Link>{' '}
+        </div>
+      );
+
     case 401:
       // Unauthorized
       return <Navigate to="/login" />;

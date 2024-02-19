@@ -109,7 +109,8 @@ export async function roomLoader({ params }) {
   );
 
   if (!res.ok) {
-    throw new Response('Unable to load room', { status: res.status });
+    const { errors } = await res.json();
+    throw new Response(errors[0].title, { status: res.status });
   }
 
   return res.json();
