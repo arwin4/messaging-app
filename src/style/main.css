@@ -12,22 +12,28 @@ html {
   --antiflash-white: rgb(231, 231, 231);
   --red-pantone: hsla(353, 86%, 54%, 1);
   --fire-engine-red: hsla(350, 96%, 43%, 1);
+
+  --general-spacing: 20px;
 }
 
 body {
   margin: 0 0;
 
   font-family: 'Red Hat Display', sans-serif;
+  background-color: hsla(240, 100%, 100%, 0.5);
 }
 
 #root {
-  height: 100dvh;
   display: flex;
   justify-content: center;
+
+  &:has(.room) {
+    height: 100dvh;
+  }
 }
 
 main {
-  padding-bottom: 60px; /* Prevent navbar overlapping at bottom of element */
+  padding-bottom: 70px; /* Prevent navbar overlapping at bottom of element */
   width: 100%;
 
   display: flex;
