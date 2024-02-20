@@ -10,22 +10,17 @@
     /* Should look like a button, not a link */
     all: unset;
   }
+  transition: transform 0.2s ease;
 
-  &:hover,
-  &:focus-visible {
-    transition: box-shadow 0.1s ease;
-    transition: border-color 0.1s ease;
-
+  &:hover {
     border-color: transparent;
+    cursor: pointer;
     box-shadow: none;
+    transform: scale(1.2);
+  }
 
-    > svg {
-      /* TODO: use fill icon instead of box-shadow */
-      transition: box-shadow 0.1s ease;
-      cursor: pointer;
-      box-shadow: 0px 0px 0px 5px rgb(0 0 0 / 57%);
-      border-radius: 50%;
-    }
+  &:focus-visible {
+    box-shadow: 0px 0px 0px 2px var(--primary-purple);
   }
 }
 
