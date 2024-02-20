@@ -16,6 +16,8 @@
       display: flex;
       gap: 20px;
 
+      color: var(--antiflash-white);
+
       .author {
         font-weight: 500;
         padding: 0 5px;
@@ -23,7 +25,8 @@
     }
 
     .text-content {
-      background-color: var(--oc-indigo-1);
+      background-color: var(--primary-yellow);
+      color: var(--primary-purple);
 
       width: fit-content;
       max-width: 500px;
@@ -49,6 +52,6 @@
   }
 
   .no-messages {
-    color: var(--oc-gray-6);
+    color: var(--antiflash-white);
   }
 }

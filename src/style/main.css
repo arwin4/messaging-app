@@ -2,16 +2,18 @@
 @import 'button.css';
 @import 'dialog.css';
 @import 'input.css';
-@import 'open-color.css';
 
 html {
   /* Variables */
-  --tomato: hsla(7, 100%, 66%, 1);
-  --space-cadet: hsla(235, 21%, 21%, 1);
-  --cool-gray: hsla(218, 17%, 62%, 1);
-  --antiflash-white: rgb(231, 231, 231);
-  --red-pantone: hsla(353, 86%, 54%, 1);
-  --fire-engine-red: hsla(350, 96%, 43%, 1);
+  --tekhelet: hsla(246, 46%, 37%, 1);
+  --medium-slate-blue: hsla(239, 77%, 70%, 1);
+  --tangerine: hsla(34, 99%, 47%, 1);
+  --persimmon: hsla(22, 97%, 48%, 1);
+
+  --primary-yellow: hsl(45, 99%, 49%, 1);
+  --primary-yellow-faded: hsla(45, 50%, 49%, 1);
+  --primary-purple: hsl(273, 57%, 18%);
+  --antiflash-white: hsl(210, 13%, 94%, 1);
 
   --general-spacing: 20px;
 }
@@ -20,7 +22,7 @@ body {
   margin: 0 0;
 
   font-family: 'Red Hat Display', sans-serif;
-  background-color: hsla(240, 100%, 100%, 0.5);
+  background-color: var(--primary-purple);
 }
 
 #root {
@@ -34,6 +36,11 @@ body {
 
 main {
   padding-bottom: 70px; /* Prevent navbar overlapping at bottom of element */
+
+  &:has(.room) {
+    padding-bottom: 60px;
+  }
+
   width: 100%;
 
   display: flex;
