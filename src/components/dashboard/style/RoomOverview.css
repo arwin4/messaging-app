@@ -1,6 +1,7 @@
 .room-overview {
   display: flex;
   flex-direction: column;
+  padding: var(--general-spacing);
   gap: var(--general-spacing);
 
   .no-chats-notice {
