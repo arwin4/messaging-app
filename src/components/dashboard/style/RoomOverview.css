@@ -1,0 +1,70 @@
+.room-overview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--general-spacing);
+
+  h1 {
+    margin-top: var(--general-spacing);
+    align-self: center;
+    padding: 5px var(--general-spacing);
+
+    border-radius: 5px;
+
+    width: fit-content;
+
+    text-align: center;
+    color: var(--oc-gray-8);
+    font-size: 1.5rem;
+
+    background-color: var(--oc-gray-3);
+    border: 2px solid var(--oc-gray-4);
+  }
+
+  .no-chats-notice {
+    text-align: center;
+  }
+
+  .room-card {
+    all: unset;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 50px 100px;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px 0;
+    min-width: 300px;
+    gap: 25px;
+
+    border-radius: 20px;
+    background-color: var(--oc-indigo-0);
+
+    border: 2px solid var(--oc-gray-4);
+
+    transition:
+      transform 0.1s ease,
+      box-shadow 0.1s ease;
+
+    &:hover {
+      cursor: pointer;
+
+      box-shadow: 0px 0px 10px 0px var(--oc-gray-4);
+      transform: scale(1.02);
+    }
+
+    &:focus-visible {
+      box-shadow: 0px 0px 0px 2px black;
+    }
+
+    .member-count-wrapper {
+      display: flex;
+      place-items: center;
+      place-content: center;
+
+      .icon {
+        height: 30px;
+        color: var(--oc-gray-8);
+      }
+    }
+  }
+}

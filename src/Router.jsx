@@ -2,14 +2,13 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 // Components
-import Dashboard from '@pages/Dashboard';
 import Login from '@pages/Login';
 
 // TODO: add error element/page
 // TODO: add loading element
 import Room, { roomLoader } from '@pages/Room';
 import Friends, { friendsLoader, friendsAction } from '@pages/Friends';
-import { roomsLoader } from '@components/dashboard/RoomOverview';
+import RoomOverview, { roomsLoader } from '@components/dashboard/RoomOverview';
 import Error from '@pages/Error';
 import RequireAuthLayout from '@components/RequireAuthLayout';
 
@@ -23,7 +22,7 @@ function Router() {
       children: [
         {
           index: true,
-          element: <Dashboard />,
+          element: <RoomOverview />,
           loader: roomsLoader,
         },
         {

@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
-import { NavLink, useLoaderData, useRevalidator } from 'react-router-dom';
+import { Link, useLoaderData, useRevalidator } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import getCurrentUser from '@utils/getCurrentUser';
 import roomPropType from '@components/propTypes/roomPropType';
 import getJwt from '@utils/getJwt';
+import './style/RoomOverview.css';
+import { InlineIcon } from '@iconify/react';
 
 export default function RoomOverview() {
   const rooms = useLoaderData();
@@ -41,37 +43,38 @@ export default function RoomOverview() {
   }, []);
 
   return (
-    <>
-      <h2>Your group conversations</h2>
-      {rooms
-        .filter((room) => room.isGroup)
-        .map((room) => (
-          <RoomItem room={room} key={room._id} />
-        ))}
-
-      <h2>Your one-on-one conversations</h2>
-      {rooms
-        .filter((room) => room.isGroup === false)
-        .map((room) => (
-          <RoomItem room={room} key={room._id} />
-        ))}
-    </>
+    <div className="room-overview">
+      <h1>Chats</h1>
+      {rooms.length === 0 && (
+        <div className="no-chats-notice">
+          <p>No chats yet!</p>
+          <p>↓ Head over to Friends to get started. ↓</p>
+        </div>
+      )}
+      {rooms.map((room) => (
+        <RoomItem room={room} key={room._id} />
+      ))}
+    </div>
   );
 }
 
 function RoomItem({ room }) {
   const currentUser = getCurrentUser();
-  // TODO: semantic html: list item
+
   return (
-    <div>
-      <NavLink to={`/conversations/${room._id}`}>
-        {room.members.map((member, i, { length }) => {
-          if (length === 1) return 'Just you';
-          if (member.username === currentUser.username) return '';
-          return `${member.username} `;
-        })}
-      </NavLink>
-    </div>
+    <Link to={`/conversations/${room._id}`} type="button" className="room-card">
+      <div className="member-count-wrapper">
+        <div className="count">{room.members.length}</div>
+        <InlineIcon className="icon" icon="ri:user-line" height="unset" />
+      </div>
+      <div className="members-wrapper">
+        {room.members.map((member) => (
+          <div className="username" key={member._id}>
+            {member.username === currentUser.username ? 'You' : member.username}
+          </div>
+        ))}
+      </div>
+    </Link>
   );
 }
 
