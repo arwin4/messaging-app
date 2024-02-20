@@ -14,7 +14,8 @@
     flex-direction: column;
   }
 
-  h1 {
+  h1,
+  h2 {
     align-self: center;
     padding: 5px var(--general-spacing);
 
@@ -24,9 +25,15 @@
 
     text-align: center;
     color: var(--oc-gray-8);
+
     font-size: 1.5rem;
 
     background-color: var(--oc-gray-3);
+    border: 2px solid var(--oc-gray-4);
+
+    &:is(h2) {
+      font-size: 1.2rem;
+    }
   }
 
   .no-friends {
@@ -71,6 +78,7 @@
 
       border-radius: 20px;
       background-color: var(--oc-indigo-0);
+      border: 2px solid var(--oc-indigo-1);
 
       .friend-username {
         min-width: 0; /* Prevent grid blowout */
