@@ -4,7 +4,9 @@
 @import 'input.css';
 
 html {
-  /* Variables */
+  /* == Variables == */
+
+  /* Colors */
   --tekhelet: hsla(246, 46%, 37%, 1);
   --medium-slate-blue: hsla(239, 77%, 70%, 1);
   --tangerine: hsla(34, 99%, 47%, 1);
@@ -15,6 +17,7 @@ html {
   --primary-purple: hsl(273, 57%, 18%);
   --antiflash-white: hsl(210, 13%, 94%, 1);
 
+  /* Others */
   --general-spacing: 20px;
 }
 
@@ -29,6 +32,7 @@ body {
   display: flex;
   justify-content: center;
 
+  /* Ensure the message input sticks to the bottom of the viewport */
   &:has(.room) {
     height: 100dvh;
   }
