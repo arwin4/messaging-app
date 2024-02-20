@@ -1,6 +1,4 @@
 .friends {
-  --general-spacing: 20px;
-
   display: flex;
   flex-direction: column;
 
