@@ -44,7 +44,7 @@ export default function RoomOverview() {
 
   return (
     <div className="room-overview">
-      <h1>Chats</h1>
+      <h1 className="title">Chats</h1>
       {rooms.length === 0 && (
         <div className="no-chats-notice">
           <p>No chats yet!</p>

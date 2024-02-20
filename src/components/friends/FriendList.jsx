@@ -11,7 +11,7 @@ import LinkButton from '@components/buttons/LinkButton';
 export default function FriendList({ friends }) {
   return (
     <>
-      <h1>Friends</h1>
+      <h1 className="title">Friends</h1>
       {friends.length > 0 && (
         <div className="friend-list">
           {friends.map((friend) => (

@@ -3,24 +3,6 @@
   flex-direction: column;
   gap: var(--general-spacing);
 
-  h1 {
-    margin-top: var(--general-spacing);
-    align-self: center;
-    padding: 0 var(--general-spacing);
-
-    border-radius: 5px;
-
-    width: fit-content;
-
-    text-align: center;
-    color: var(--antiflash-white);
-    font-size: 1.5rem;
-
-    border: 5px solid var(--antiflash-white);
-    border-left-width: 0;
-    border-right-width: 0;
-  }
-
   .no-chats-notice {
     text-align: center;
   }

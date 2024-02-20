@@ -18,7 +18,7 @@ export default function AddFriend() {
 
   return (
     <div className="add-friend">
-      <h2>Add a friend</h2>
+      <h2 className="title section-title">Add a friend</h2>
 
       <fetcher.Form className="add-friend-form" method="PATCH">
         <input

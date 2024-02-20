@@ -51,6 +51,31 @@ main {
   justify-content: center;
 }
 
+.title {
+  margin-top: var(--general-spacing);
+  align-self: center;
+  padding: 0 var(--general-spacing);
+
+  border-radius: 5px;
+
+  width: fit-content;
+
+  text-align: center;
+  color: var(--antiflash-white);
+  font-size: 1.5rem;
+
+  border: 5px solid var(--antiflash-white);
+  border-left-width: 0;
+  border-right-width: 0;
+
+  &.section-title {
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-radius: 0;
+    font-size: 1.2rem;
+  }
+}
+
 /* Prevent buttons that use an <a> tag from getting underline */
 a:has(button) {
   text-decoration: none;
