@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigation, useRouteError } from 'react-router-dom';
+import { Link, Navigate, useNavigation, useRouteError } from 'react-router-dom';
 import './style/Error.css';
 import LinkButton from '@components/buttons/LinkButton';
 
@@ -41,7 +41,7 @@ export default function Error() {
 
     case 401:
       // Unauthorized
-      return { toLoginBtn };
+      return <Navigate to="/login" />;
     case 404:
       return (
         <div className="error">
@@ -53,7 +53,7 @@ export default function Error() {
       return (
         <div className="error">
           An error occurred.
-          {backToChatsBtn}
+          {toLoginBtn}
         </div>
       );
   }
