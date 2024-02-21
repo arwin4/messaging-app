@@ -1,6 +1,10 @@
 import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import useAuth from '@hooks/auth/useAuth';
+import { InlineIcon } from '@iconify/react';
+import './style/Login.css';
+import LinkButton from '@components/buttons/LinkButton';
+import LabelButton from '@components/buttons/LabelButton';
 
 export default function Login() {
   const { login, authed } = useAuth();
@@ -13,25 +17,46 @@ export default function Login() {
   // TODO: Error messages on failed login
 
   return (
-    <>
-      <h4>Log in</h4>
+    <div className="login">
+      <header>
+        <InlineIcon
+          className="icon"
+          icon="ri:chat-smile-3-line"
+          height="unset"
+        />
+        <h1>Welcome to Chat App!</h1>
+      </header>
+
       <form onSubmit={login}>
-        <div>
-          <label htmlFor="username">
-            Username
-            <input type="text" id="username" name="username" required />
-          </label>
-        </div>
+        <label htmlFor="username">
+          Username
+          <input type="text" id="username" name="username" required />
+        </label>
 
-        <div>
-          <label htmlFor="password">
-            Password
-            <input type="password" name="password" id="password" required />
-          </label>
-        </div>
+        <label htmlFor="password">
+          Password
+          <input type="password" name="password" id="password" required />
+        </label>
 
-        <button type="submit">Log in</button>
+        <LabelButton
+          icon="ri:arrow-right-double-fill"
+          inline="true"
+          text="Log in"
+          type="submit"
+          // busy={busy}
+        />
       </form>
-    </>
+
+      <div className="signup-container">
+        <Link to="/signup">
+          <LinkButton
+            icon="ri:arrow-right-double-fill"
+            text="Sign up in 10 seconds"
+            inline="true"
+            // busy={goToChatBusy}
+          />
+        </Link>
+      </div>
+    </div>
   );
 }

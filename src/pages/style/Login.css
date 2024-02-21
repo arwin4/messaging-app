@@ -1,0 +1,47 @@
+.login {
+  align-self: center;
+
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: var(--general-spacing);
+
+  min-width: min(80dvw, 400px);
+  height: fit-content;
+  padding: var(--general-spacing) 10px;
+
+  background-color: var(--primary-yellow);
+  border-radius: 10px;
+
+  header {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 1fr 200px;
+
+    .icon {
+      height: 75px;
+    }
+
+    h1 {
+      font-size: 1.7rem;
+    }
+  }
+
+  form {
+    display: grid;
+    gap: 10px;
+    margin: var(--general-spacing) 0;
+
+    label[for='username'],
+    label[for='password'] {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .label-btn {
+      justify-self: end;
+    }
+  }
+}
