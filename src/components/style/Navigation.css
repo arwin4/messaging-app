@@ -22,10 +22,12 @@
     padding: 4px 0;
 
     text-decoration: none;
+    text-align: center;
 
     .icon,
     .description {
       color: var(--primary-purple);
+      width: 50px; /* Prevent items shifting if a NavLink is active */
     }
 
     .icon {
