@@ -11,6 +11,7 @@ import Friends, { friendsLoader, friendsAction } from '@pages/Friends';
 import RoomOverview, { roomsLoader } from '@components/dashboard/RoomOverview';
 import Error from '@pages/Error';
 import RequireAuthLayout from '@components/RequireAuthLayout';
+import Profile from '@pages/Profile';
 
 function Router() {
   const router = createBrowserRouter([
@@ -36,6 +37,7 @@ function Router() {
           element: <Room />,
           loader: roomLoader,
         },
+        { path: 'profile', element: <Profile /> },
       ],
     },
     {

@@ -1,0 +1,38 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 500px;
+
+  padding: var(--general-spacing);
+  gap: var(--general-spacing);
+
+  .username {
+    background-color: var(--primary-yellow);
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 1.3rem;
+  }
+
+  .tip {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+    padding: 10px;
+    gap: 10px;
+    border-radius: 20px;
+    max-width: 500px;
+
+    color: var(--primary-purple);
+    background-color: var(--primary-yellow);
+
+    .icon {
+      height: 30px;
+      color: var(--medium-slate-blue);
+    }
+  }
+}

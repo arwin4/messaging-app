@@ -26,7 +26,7 @@ export default function Navigation() {
           icon="ri:account-box-line"
           height="unset"
         />
-        <div className="description">Account</div>
+        <div className="description">Profile</div>
 
         <div className="active-indicator" />
       </NavLink>
