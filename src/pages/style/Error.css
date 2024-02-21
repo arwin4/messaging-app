@@ -1,13 +1,16 @@
 .error {
-  place-self: center;
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
 
+  height: 20dvh;
   padding: 25px;
+  margin: 40dvh 0;
+  max-width: 300px;
+
   gap: 10px;
   border-radius: 25px;
-  max-width: 500px;
 
-  background-color: var(--medium-slate-blue);
+  background-color: var(--primary-yellow);
 }
