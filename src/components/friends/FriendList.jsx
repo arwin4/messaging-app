@@ -38,16 +38,11 @@ function FriendListItem({ friend }) {
   const [openRoomBusy, setOpenRoomBusy] = useState(false);
   const removeChatBusy = fetcher.state !== 'idle';
 
-  let destinationPath;
-  if (friend.duoRoomId) {
-    destinationPath = `/conversations/${friend.duoRoomId}`;
-  }
-
-  // Give 'Go to chat' button its own busy state
-  let goToChatBusy = false;
-  if (navigation.location?.pathname === destinationPath) {
-    goToChatBusy = true;
-  }
+  // Give every 'Go to chat' button its own busy state
+  const destinationPath = friend.duoRoomId
+    ? `/conversations/${friend.duoRoomId}`
+    : '';
+  const goToChatBusy = navigation.location?.pathname === destinationPath;
 
   return (
     // Use react router's Form to leverage loaders & actions
