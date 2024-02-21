@@ -12,7 +12,9 @@ export default function AddFriend() {
     // Autofocus and clear input on submit
     if (fetcher.state === 'idle') {
       inputRef.current.value = '';
-      inputRef.current.focus();
+
+      // Autofocus only on non-touch screens, keeping the virtual keyboard from showing automatically
+      if (!matchMedia('(pointer:coarse)').matches) inputRef.current.focus();
     }
   }, [fetcher.state]);
 
