@@ -35,7 +35,13 @@ export default function Login() {
 
         <label htmlFor="password">
           Password
-          <input type="password" name="password" id="password" required />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            autoComplete="on"
+            required
+          />
         </label>
 
         <LabelButton
