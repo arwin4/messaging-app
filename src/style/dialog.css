@@ -23,8 +23,8 @@ dialog {
   border-end-start-radius: 0;
   border-block-end-width: 0;
 
-  background-color: var(--primary-purple);
-  color: var(--antiflash-white);
+  background-color: var(--foreground-color);
+  color: var(--text-color);
   box-shadow: 0px 0px 50px 0px black;
 
   @media (min-width: 768px) {
@@ -50,9 +50,12 @@ dialog {
     gap: 20px;
     height: 60px;
 
-    background-color: var(--primary-yellow);
-    color: var(--primary-purple);
+    background-color: var(--background-color);
     box-shadow: 0px -1px 9px 0px rgb(0 0 0 / 30%);
+
+    * {
+      color: var(--accent-color);
+    }
 
     .icon {
       height: 30px;

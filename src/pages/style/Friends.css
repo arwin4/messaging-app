@@ -16,7 +16,7 @@
     padding: var(--general-spacing) 0;
     gap: var(--general-spacing);
     align-items: center;
-    color: var(--antiflash-white);
+    color: var(--text-color);
 
     .notice {
       text-align: center;
@@ -32,12 +32,12 @@
       border-radius: 20px;
       max-width: 500px;
 
-      color: var(--primary-purple);
-      background-color: var(--primary-yellow);
+      background-color: var(--foreground-color);
+      box-shadow: var(--shadow);
 
       .icon {
         height: 30px;
-        color: var(--medium-slate-blue);
+        color: var(--accent-color);
       }
     }
   }
@@ -55,7 +55,8 @@
       gap: 10px;
 
       border-radius: 20px;
-      background-color: var(--primary-yellow);
+      background-color: var(--foreground-color);
+      box-shadow: var(--shadow);
 
       .friend-username {
         min-width: 0; /* Prevent grid blowout */

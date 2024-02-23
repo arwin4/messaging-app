@@ -7,17 +7,13 @@ html {
   /* == Variables == */
 
   /* Colors */
-  --tekhelet: hsla(246, 46%, 37%, 1);
-  --medium-slate-blue: hsla(239, 77%, 70%, 1);
-  --tangerine: hsla(34, 99%, 47%, 1);
-  --persimmon: hsla(22, 97%, 48%, 1);
-
-  --primary-yellow: hsl(45, 99%, 49%, 1);
-  --primary-yellow-faded: hsla(45, 50%, 49%, 1);
-  --primary-purple: hsl(273, 57%, 18%);
-  --antiflash-white: hsl(210, 13%, 94%, 1);
+  --background-color: #003566;
+  --foreground-color: #1d619f;
+  --accent-color: #ffd60a;
+  --text-color: azure;
 
   /* Others */
+  --shadow: 10px 10px 36px -8px hsl(0, 0%, 0%, 0.5);
   --general-spacing: 20px;
 }
 
@@ -25,7 +21,8 @@ body {
   margin: 0 0;
 
   font-family: 'Red Hat Display', sans-serif;
-  background-color: var(--primary-purple);
+  color: azure;
+  background-color: var(--background-color);
 }
 
 #root {
@@ -62,10 +59,9 @@ main {
   width: fit-content;
 
   text-align: center;
-  color: var(--antiflash-white);
   font-size: 1.5rem;
 
-  border: 5px solid var(--antiflash-white);
+  border: 5px solid var(--text-color);
   border-left-width: 0;
   border-right-width: 0;
 

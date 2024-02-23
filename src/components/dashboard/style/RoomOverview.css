@@ -21,20 +21,16 @@
     gap: 25px;
 
     border-radius: 20px;
-    background-color: var(--primary-yellow);
+    background-color: var(--foreground-color);
 
-    box-shadow: 0px 0px 0px 1px var(--antiflash-white);
-
+    box-shadow: var(--shadow);
     transition:
       transform 0.1s ease,
       box-shadow 0.1s ease;
 
     &:hover {
       cursor: pointer;
-
-      box-shadow: 0px 0px 0px 5px var(--antiflash-white);
-      border-width: 5px;
-      transform: scale(1.02);
+      transform: scale(1.04);
     }
 
     &:focus-visible {
@@ -47,10 +43,10 @@
       place-content: center;
 
       font-weight: bolder;
+      color: var(--accent-color);
 
       .icon {
         height: 30px;
-        color: var(--primary-purple);
       }
     }
   }

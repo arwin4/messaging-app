@@ -10,10 +10,11 @@
   gap: var(--general-spacing);
 
   .username {
-    background-color: var(--primary-yellow);
     padding: 10px;
     border-radius: 20px;
     font-size: 1.3rem;
+    background-color: var(--foreground-color);
+    box-shadow: var(--shadow);
   }
 
   .tip {
@@ -27,12 +28,12 @@
     border-radius: 20px;
     max-width: 500px;
 
-    color: var(--primary-purple);
-    background-color: var(--primary-yellow);
+    background-color: var(--foreground-color);
+    box-shadow: var(--shadow);
 
     .icon {
       height: 30px;
-      color: var(--medium-slate-blue);
+      color: var(--accent-color);
     }
   }
 }

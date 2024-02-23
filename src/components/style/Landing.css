@@ -10,8 +10,9 @@
   height: fit-content;
   padding: var(--general-spacing) 10px;
 
-  background-color: var(--primary-yellow);
+  background-color: var(--foreground-color);
   border-radius: 10px;
+  box-shadow: var(--shadow);
 
   header {
     display: grid;
@@ -19,6 +20,7 @@
     align-items: center;
     justify-content: center;
     grid-template-columns: 1fr 200px;
+    color: var(--accent-color);
 
     .icon {
       height: 75px;
@@ -50,5 +52,7 @@
     margin-top: 15px;
     border: 2px solid;
     border-radius: 10px;
+    background-color: var(--accent-color);
+    color: var(--foreground-color);
   }
 }

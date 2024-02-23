@@ -16,7 +16,7 @@
       display: flex;
       gap: 20px;
 
-      color: var(--antiflash-white);
+      color: var(--text-color);
 
       .author {
         font-weight: 500;
@@ -25,8 +25,8 @@
     }
 
     .text-content {
-      background-color: var(--primary-yellow);
-      color: var(--primary-purple);
+      background-color: var(--foreground-color);
+      color: var(--text-color);
 
       width: fit-content;
       max-width: 500px;
@@ -34,6 +34,8 @@
       padding: 10px;
 
       word-wrap: break-word;
+
+      box-shadow: 10px 10px 36px -8px rgba(0, 0, 0, 0.49);
     }
 
     /* Current user's messages align to the right */
@@ -52,6 +54,6 @@
   }
 
   .no-messages {
-    color: var(--antiflash-white);
+    color: var(--text-color);
   }
 }

@@ -12,5 +12,5 @@
   gap: 10px;
   border-radius: 25px;
 
-  background-color: var(--primary-yellow);
+  background-color: var(--foreground-color);
 }
