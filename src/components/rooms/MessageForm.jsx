@@ -13,6 +13,7 @@ export default function MessageForm({ socketMessages }) {
   const currentUser = getCurrentUser();
 
   const [shouldClearInput, setShouldClearInput] = useState(true);
+  const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     // Autofocus on the message field on mount and after each message.
@@ -26,6 +27,7 @@ export default function MessageForm({ socketMessages }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setBusy(true);
 
     const res = await fetch(
       `${import.meta.env.VITE_API_SERVER_URL}/rooms/${roomId}/messages`,
@@ -48,6 +50,8 @@ export default function MessageForm({ socketMessages }) {
       // return { error: 'Unable to send message.' };
       setShouldClearInput(false);
     }
+
+    setBusy(false);
   }
 
   return (
@@ -63,6 +67,7 @@ export default function MessageForm({ socketMessages }) {
         ref={inputRef}
         maxLength={500}
         autoComplete="off"
+        disabled={busy}
         required
       />
       <button className="label-btn" type="submit" aria-label="Send message">
