@@ -2,6 +2,7 @@
 @import 'button.css';
 @import 'dialog.css';
 @import 'input.css';
+@import 'tip.css';
 
 html {
   /* == Variables == */
