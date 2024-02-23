@@ -1,0 +1,14 @@
+.errors {
+  margin-top: 15px;
+  align-self: center;
+  justify-self: center;
+
+  width: max-content;
+  padding: 5px;
+
+  color: var(--foreground-color);
+
+  border-radius: 10px;
+
+  background-color: var(--accent-color);
+}

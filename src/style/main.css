@@ -3,6 +3,7 @@
 @import 'dialog.css';
 @import 'input.css';
 @import 'tip.css';
+@import 'errors.css';
 
 html {
   /* == Variables == */
