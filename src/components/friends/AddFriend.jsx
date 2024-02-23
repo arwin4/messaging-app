@@ -1,12 +1,20 @@
 import LabelButton from '@components/buttons/LabelButton';
 import React, { useEffect, useRef } from 'react';
-import { useActionData, useFetcher } from 'react-router-dom';
+import { useFetcher } from 'react-router-dom';
 
 export default function AddFriend() {
-  const actionData = useActionData();
   const fetcher = useFetcher();
+  const errors = fetcher.data;
   const busy = fetcher.state !== 'idle';
   const inputRef = useRef();
+
+  const errorElement = errors ? (
+    <div className="errors">
+      {errors?.map((error) => (
+        <p key={error.title}>{error.title}</p>
+      ))}
+    </div>
+  ) : undefined;
 
   useEffect(() => {
     // Autofocus and clear input on submit
@@ -21,6 +29,7 @@ export default function AddFriend() {
   return (
     <div className="add-friend">
       <h2 className="title section-title">Add a friend</h2>
+      {errorElement}
 
       <fetcher.Form className="add-friend-form" method="PATCH">
         <input
@@ -39,10 +48,6 @@ export default function AddFriend() {
           type="submit"
           busy={busy}
         />
-
-        {actionData && actionData.error && (
-          <p className="error">{actionData.error}</p>
-        )}
       </fetcher.Form>
     </div>
   );
