@@ -4,8 +4,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Components
 import Login from '@pages/Login';
 
-// TODO: add error element/page
-// TODO: add loading element
 import Room, { roomLoader } from '@pages/Room';
 import Friends, { friendsLoader, friendsAction } from '@pages/Friends';
 import RoomOverview, { roomsLoader } from '@components/dashboard/RoomOverview';
