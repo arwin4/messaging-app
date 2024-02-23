@@ -54,7 +54,6 @@ export function AuthProvider({ children }) {
   return <authContext.Provider value={auth}>{children}</authContext.Provider>;
 }
 
-// TODO: remove this
 export default function AuthConsumer() {
   return useContext(authContext);
 }

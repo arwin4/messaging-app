@@ -5,7 +5,6 @@ import './style/AddMembers.css';
 import FriendList from './AddMembers/FriendList';
 import AddMemberByUsername from './AddMembers/AddMemberByUsername';
 
-// TODO: Add members by username
 export default function AddMembers({ room }) {
   const currentUser = getCurrentUser();
   const { friends } = currentUser;

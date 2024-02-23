@@ -67,7 +67,6 @@ export default function Room() {
     }
 
     function handleRoomDeleted() {
-      // TODO: show message that explains why the user was redirected
       navigate('/');
     }
 
@@ -90,7 +89,6 @@ export default function Room() {
   }, []);
 
   return (
-    // TODO: show number of members
     <div className="room">
       <Header room={room} socketMessages={socketMessages} />
       <Messages room={room} socketMessages={socketMessages} />
