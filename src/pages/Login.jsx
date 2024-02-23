@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import useAuth from '@hooks/auth/useAuth';
-import { InlineIcon } from '@iconify/react';
-import './style/Login.css';
 import LinkButton from '@components/buttons/LinkButton';
 import LabelButton from '@components/buttons/LabelButton';
 
@@ -18,15 +16,7 @@ export default function Login() {
 
   return (
     <div className="login">
-      <header>
-        <InlineIcon
-          className="icon"
-          icon="ri:chat-smile-3-line"
-          height="unset"
-        />
-        <h1>Welcome to Chat App!</h1>
-      </header>
-
+      <h2>Log in</h2>
       <form onSubmit={login}>
         <label htmlFor="username">
           Username

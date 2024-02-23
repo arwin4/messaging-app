@@ -12,6 +12,8 @@ import RoomOverview, { roomsLoader } from '@components/dashboard/RoomOverview';
 import Error from '@pages/Error';
 import RequireAuthLayout from '@components/RequireAuthLayout';
 import Profile from '@pages/Profile';
+import Signup, { signupAction } from '@pages/Signup';
+import LandingLayout from '@components/LandingLayout';
 
 function Router() {
   const router = createBrowserRouter([
@@ -42,8 +44,22 @@ function Router() {
     },
     {
       path: '/login',
-      element: <Login />,
+      element: (
+        <LandingLayout>
+          <Login />
+        </LandingLayout>
+      ),
       errorElement: <Error />,
+    },
+    {
+      path: '/signup',
+      element: (
+        <LandingLayout>
+          <Signup />
+        </LandingLayout>
+      ),
+      errorElement: <Error />,
+      action: signupAction,
     },
   ]);
 

@@ -32,8 +32,9 @@ body {
   display: flex;
   justify-content: center;
 
-  /* Ensure the message input sticks to the bottom of the viewport and allow vertically centering Login element */
-  &:has(.room, .login) {
+  /* Ensure the message input sticks to the bottom of the viewport and allow
+  vertically centering landing page elements */
+  &:has(.room, .landing) {
     height: 100dvh;
   }
 }

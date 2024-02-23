@@ -1,4 +1,4 @@
-.login {
+.landing {
   align-self: center;
 
   display: grid;
@@ -38,10 +38,17 @@
     label[for='password'] {
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
 
     .label-btn {
       justify-self: end;
     }
+  }
+
+  .errors {
+    margin-top: 15px;
+    border: 2px solid;
+    border-radius: 10px;
   }
 }
