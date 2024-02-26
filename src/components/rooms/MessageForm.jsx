@@ -9,10 +9,7 @@ import socketMessagesPropType from '@components/propTypes/socketMessagesPropType
 export default function MessageForm({ socketMessages }) {
   const inputRef = useRef();
   const roomId = useParams().id;
-
   const currentUser = getCurrentUser();
-
-  const [shouldClearInput, setShouldClearInput] = useState(true);
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
@@ -22,8 +19,9 @@ export default function MessageForm({ socketMessages }) {
 
     // Empty message field after user sends a message, but not on incoming messages
     if (socketMessages.at(-1)?.author.username !== currentUser.username) return;
-    if (shouldClearInput) inputRef.current.value = '';
-  }, [socketMessages, shouldClearInput]);
+
+    inputRef.current.value = '';
+  }, [socketMessages]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -45,11 +43,7 @@ export default function MessageForm({ socketMessages }) {
       },
     );
 
-    if (res.status !== 200) {
-      // TODO: handle error
-      // return { error: 'Unable to send message.' };
-      setShouldClearInput(false);
-    }
+    if (!res.ok) inputRef.current.value = 'Unable to send message';
 
     setBusy(false);
   }
