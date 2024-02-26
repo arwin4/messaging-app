@@ -7,7 +7,6 @@ export default function RequireAuth({ children }) {
   const { authed, setAuthed } = useAuth();
   const location = useLocation();
 
-  // TODO: actually verify the token
   // Check if already logged in
   useEffect(() => {
     if (authed) return;
