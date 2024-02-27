@@ -21,10 +21,7 @@ export default function DeleteRoom({ room }) {
   });
 
   const handleDeleteConversation = useCallback(async () => {
-    const res = await deleteRoom(room._id);
-    if (res.status !== 200) {
-      // TODO: Handle error
-    }
+    await deleteRoom(room._id);
     navigate('/');
   });
 
