@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 import React, { useState } from 'react';
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import useAuth from '@hooks/auth/useAuth';
@@ -37,7 +38,7 @@ export default function Login() {
       <form onSubmit={handleLogin}>
         <label htmlFor="username">
           Username
-          <input type="text" id="username" name="username" required />
+          <input type="text" id="username" name="username" required autoFocus />
         </label>
 
         <label htmlFor="password">
