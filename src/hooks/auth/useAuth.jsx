@@ -24,7 +24,7 @@ function useAuth() {
 
     if (res.status !== 200) {
       setAuthed(false);
-      return;
+      return res;
     }
 
     const token = await res.json();
@@ -37,6 +37,7 @@ function useAuth() {
     await fetchAndSetCurrentUser();
 
     setAuthed(true);
+    return res;
   }
 
   function logout() {
