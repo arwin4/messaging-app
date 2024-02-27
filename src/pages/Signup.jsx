@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 import LabelButton from '@components/buttons/LabelButton';
 import React from 'react';
 import { Form, redirect, useActionData, useNavigation } from 'react-router-dom';
@@ -28,6 +29,7 @@ export default function Signup() {
             autoComplete="off"
             maxLength={12}
             required
+            autoFocus
           />
         </label>
 
