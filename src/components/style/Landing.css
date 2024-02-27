@@ -31,7 +31,8 @@
     }
   }
 
-  .signup {
+  .signup,
+  .login {
     display: grid;
   }
 
