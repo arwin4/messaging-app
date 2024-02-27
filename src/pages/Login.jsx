@@ -9,18 +9,21 @@ export default function Login() {
   const { login, authed } = useAuth();
   const { state } = useLocation();
   const [loginErrors, setLoginErrors] = useState(null);
+  const [loginBusy, setLoginBusy] = useState(false);
 
   if (authed) {
     return <Navigate to={state?.path || '/'} />;
   }
 
   async function handleLogin(e) {
+    setLoginBusy(true);
     const res = await login(e);
     if (!res.ok) {
       const resJson = await res.json();
       const { errors } = resJson;
       setLoginErrors(errors);
     }
+    setLoginBusy(false);
   }
 
   return (
@@ -57,8 +60,7 @@ export default function Login() {
           inline="true"
           text="Log in"
           type="submit"
-          // TODO: busy state
-          // busy={busy}
+          busy={loginBusy}
         />
       </form>
 
@@ -68,15 +70,9 @@ export default function Login() {
             icon="ri:arrow-right-double-fill"
             text="Sign up in 10 seconds"
             inline="true"
-            // TODO: busy state
-            // busy={goToChatBusy}
           />
         </Link>
       </div>
     </div>
   );
 }
-
-// export async function loginAction({ request }) {
-//   const data = await request.formData();
-// }
