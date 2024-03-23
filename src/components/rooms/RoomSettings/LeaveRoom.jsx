@@ -44,7 +44,7 @@ export default function LeaveRoom({ room }) {
             <span className="emphasis">
               You won&apos;t be able to rejoin it,
             </span>{' '}
-            unless another participants adds you back.
+            unless another participant adds you back.
           </div>
         }
         submitBtnText="Yes, leave"
