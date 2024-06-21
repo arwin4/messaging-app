@@ -28,6 +28,6 @@ These are highlights of the frontend only. Check out [the app's backend here](ht
 - How to actually use React Router's loaders and actions to one's advantage (and when one shouldn't use them).
 - How to create a protected route with React Router and how to combine that with my backend's authentication.
 - How to use socket.io on the frontend and backend to reliably display new chat messages and update the chat and friend overviews in real-time.
-- How to use the <dialog> element properly.
+- How to use the \<dialog> element properly.
 - The :has() selector is amazing.
 - Picking a pleasant and accessible color scheme is hard!
